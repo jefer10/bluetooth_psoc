@@ -10,9 +10,46 @@
  * ========================================
 */
 #include "project.h"
+#include <FS.h>
+
+const char acText[]="hello world\r\n";
+FS_FILE *pFile;
+
 char dato_bluetooht;
 int fila=0;
 int columna=0;
+char acBuffer[100];
+
+
+
+void WriteSD(){
+    pFile = FS_FOpen("datos.txt", "a");
+    if (pFile != 0) {
+        LCD_PrintString("Si escribio");
+        FS_Write(pFile, acText, strlen(acText));
+        FS_FClose(pFile);
+    }else{
+        LCD_PrintString("No escribio");
+    }
+}
+
+void ReadSD(){
+    pFile = FS_FOpen("datos.txt", "r");
+    int i;
+    if (pFile != 0) {
+        LCD_Position(0,0);
+            do{
+            i = FS_FRead(acBuffer, 1, sizeof(acBuffer) - 1, pFile);
+            }while (i);
+            FS_FClose(pFile);
+            i=0;
+            while(acBuffer[i]!='\r'){
+                LCD_PutChar(acBuffer[i]);
+                i++;
+            }
+    }
+}
+
 
 CY_ISR(InterrupRx){
     dato_bluetooht=UART_GetChar();//recibe el dato del bluetooth
@@ -36,6 +73,7 @@ int main(void)
     //////////////////////////////////////////////////////////////
     UART_Start();
     LCD_Start();
+    FS_Init();// Inicia Sistema de archivos
     LCD_Position(0,0);
     LCD_PrintString("CBluetooth");
     
