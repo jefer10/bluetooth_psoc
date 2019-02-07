@@ -23,6 +23,9 @@
 #include "LCD.h"
 #include "isrRX.h"
 #include "emFile.h"
+#include "ADC.h"
+#include "Pin_ADC_aliases.h"
+#include "Pin_ADC.h"
 #include "UART_IntClock.h"
 #include "LCD_LCDPort_aliases.h"
 #include "LCD_LCDPort.h"
@@ -37,7 +40,8 @@
 #include "emFile_sclk0.h"
 #include "emFile_SPI0_CS_aliases.h"
 #include "emFile_SPI0_CS.h"
-#include "cy_em_eeprom.h"
+#include "ADC_IRQ.h"
+#include "ADC_theACLK.h"
 #include "core_cm3_psoc5.h"
 #include "CyDmac.h"
 #include "CyFlash.h"
@@ -46,6 +50,7 @@
 #include "cyPm.h"
 #include "CySpc.h"
 #include "cytypes.h"
+#include "cy_em_eeprom.h"
 
 /*[]*/
 

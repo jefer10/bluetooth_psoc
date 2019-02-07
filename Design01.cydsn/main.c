@@ -10,12 +10,15 @@
  * ========================================
 */
 #include "project.h"
+#include<stdio.h>
 #include <FS.h>
 
 const char acText[]="hello world\r\n";
 FS_FILE *pFile;
 
 char dato_bluetooht;
+char temperatura[8];
+int16 tiempo,x=0;
 int8 dato_proceso;
 int fila=0;
 int columna=0;
@@ -54,6 +57,7 @@ void ReadSD(){
 
 CY_ISR(InterrupRx){
     dato_bluetooht=UART_GetChar();//recibe el dato del bluetooth
+    /*
     fila=fila + 1;
     if(fila==15){
         fila=0;
@@ -63,8 +67,8 @@ CY_ISR(InterrupRx){
         columna=0;
     }
     LCD_Position(columna,fila);
-    LCD_PutChar(dato_bluetooht);
-    UART_PutChar(dato_bluetooht);///envio el dato recibido por bluetooth
+    LCD_PutChar(dato_bluetooht);*/
+   // UART_PutChar(dato_bluetooht);///envio el dato recibido por bluetooth
 }
 
 int main(void)
@@ -75,6 +79,7 @@ int main(void)
     UART_Start();
     LCD_Start();
     FS_Init();// Inicia Sistema de archivos
+    ADC_Start();
     LCD_Position(0,0);
     LCD_PrintString("CBluetooth");
     //////////////////////////////////////////////////////////////////////////////////////
@@ -131,9 +136,8 @@ int main(void)
                         /////////variables del programa de paneles
     int update_interval=100; // time interval in ms for updating panel indicators 
     unsigned long last_time=0; // time of last update
-    char data_in; // data received from serial link
-    float trace1; // Roll Graph trace value
-
+    int16 trace1; // Roll Graph trace value
+    unsigned long t=0;
     
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
@@ -142,78 +146,45 @@ int main(void)
     {
         /* Place your application code here. */
                 /* Place your application code here. */
-        if(dato_bluetooht=='1'){ //Button Pressed
+        
+        if(dato_bluetooht=='X'){
+            
+        }
+        if(dato_bluetooht=='S'){
+            
+        }      
+        
+        if(dato_bluetooht=='O'){ //Button Pressed
       //<--- Insert button pressed code here 
-        }
-        if(dato_bluetooht=='4'){ // Button Released 
-      //<--- Insert button released code here 
-        }
-        if(dato_bluetooht=='2'){ //Button Pressed
-      //<--- Insert button pressed code here 
-        }
-        if(data_in=='5'){ // Button Released 
-      //<--- Insert button released code here 
-        }
-        if(data_in=='3'){ //Button Pressed
-      //<--- Insert button pressed code here 
-        }
-        if(data_in=='6'){ // Button Released 
-      //<--- Insert button released code here 
         }
         
+        if(dato_bluetooht=='r'){
+            ADC_StartConvert();
+            ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
+            trace1=ADC_GetResult16();
+            // actualiza Roll Graph
+            x=x+1;
+            sprintf(temperatura,"*G%d,%d*",trace1,x);
+            UART_PutString(temperatura);
+        }
+        if(dato_bluetooht=='Y'){ //Button Pressed
+      //<--- Insert button pressed code here 
+        }
         
-        if(data_in=='O'){ //Button Pressed
+        if(dato_bluetooht=='G'){ //Button Pressed
       //<--- Insert button pressed code here 
         }
-        if(data_in=='o'){ // Button Released 
-      //<--- Insert button released code here 
-        }
-        if(data_in=='R'){ //Button Pressed
+        if(dato_bluetooht=='B'){ //Button Pressed
       //<--- Insert button pressed code here 
         }
-        if(data_in=='r'){ // Button Released 
-      //<--- Insert button released code here 
+        CyDelay(500);
+        LCD_Position(0,0);
+        
+        LCD_PutChar(dato_bluetooht);
+            
         }
-        if(data_in=='Y'){ //Button Pressed
-      //<--- Insert button pressed code here 
-        }
-        if(data_in=='y'){ // Button Released 
-      //<--- Insert button released code here 
-        }
-        if(data_in=='G'){ //Button Pressed
-      //<--- Insert button pressed code here 
-        }
-        if(data_in=='g'){ // Button Released 
-      //<--- Insert button released code here 
-        }
-
-        if(data_in=='B'){ //Button Pressed
-      //<--- Insert button pressed code here 
-        }
-        if(data_in=='b'){ // Button Released 
-      //<--- Insert button released code here 
-        }
-
-        /*
-          /////////////  Send Data to Android device
-
-          unsigned long t=millis();
-          if ((t-last_time)>update_interval){
-            last_time=t;
-
-            // Update Roll Graph
-            trace1=10.0; // <--- Set trace Y value here 
-            Serial.print("t"+String(trace1)+"");
-
-            // Update Roll Graph
-            trace1=10.0; // <--- Set trace Y value here 
-            Serial.print("G"+String(trace1)+"");
-
-            // Update Roll Graph
-            trace1=10.0; // <--- Set trace Y value here 
-            Serial.print("v"+String(trace1)+"");
 
     }
-}
+
 
 /* [] END OF FILE */
