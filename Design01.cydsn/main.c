@@ -12,6 +12,7 @@
 #include "project.h"
 #include<stdio.h>
 #include <FS.h>
+#include <stdbool.h>
 
 
 const char acText[]="hello world\r\n";
@@ -24,12 +25,14 @@ int8 dato_proceso;
 int fila=0;
 int columna=0;
 char acBuffer[100];
-int8 conteo=0;
+volatile int8 conteo=0;
 int8 conteo1=0;
 char muestra[4];
 int16 tiempo_caja=500;
 int16 muestra_caja;
+volatile bool bandera_muestra=false;
 volatile char  auxiliar;
+
 
 void WriteSD(){
     pFile = FS_FOpen("datos.txt", "a");
@@ -62,7 +65,41 @@ void ReadSD(){
 
 CY_ISR(InterrupRx){
     dato_bluetooht=UART_GetChar();//recibe el dato del bluetooth
-    
+    switch (dato_bluetooht){
+        case 'r':
+        {
+            break;            
+        }
+        case 'm':
+        {
+            bandera_muestra=true;
+            break;
+        }
+        case 'f':
+        {
+        LCD_Position(0,12);
+        LCD_PrintNumber(conteo);
+        unsigned char i=0;
+        fila=1;
+        columna=0;
+        while(conteo>i){
+            LCD_Position(1,i);
+            LCD_PutChar(muestra[i]);
+            i++;
+            bandera_muestra=false;
+        }
+        conteo=0;        
+        }
+        default:
+        {
+            if (bandera_muestra==true)
+            {
+                muestra[conteo]=dato_bluetooht;
+                conteo=conteo+1;  
+                }
+            break;
+        }
+    }
     /*if((dato_bluetooht=='m')||(conteo>=1))
     {
         auxiliar=UART_GetChar(); 
@@ -153,9 +190,9 @@ int main(void)
     UART_PutString("\r");
     UART_PutString("add_monitor(7,1,8,,1)");
     UART_PutString("\r");
-    UART_PutString("add_send_box(2,1,3,,m,)");
+    UART_PutString("add_send_box(2,1,3,,T,)");
     UART_PutString("\r");
-    UART_PutString("add_send_box(2,2,3,,T,)");
+    UART_PutString("add_send_box(2,2,3,,m,)");
     UART_PutString("\r");
     UART_PutString("set_panel_notes(,,,)");
     UART_PutString("\r");
