@@ -13,18 +13,23 @@
 #include<stdio.h>
 #include <FS.h>
 
+
 const char acText[]="hello world\r\n";
 FS_FILE *pFile;
 
 char dato_bluetooht;
 char temperatura[8];
-int16 tiempo,x=0;
+int16 x=0;
 int8 dato_proceso;
 int fila=0;
 int columna=0;
 char acBuffer[100];
-
-
+int8 conteo=0;
+int8 conteo1=0;
+char muestra[4];
+int16 tiempo_caja=500;
+int16 muestra_caja;
+volatile char  auxiliar;
 
 void WriteSD(){
     pFile = FS_FOpen("datos.txt", "a");
@@ -57,6 +62,32 @@ void ReadSD(){
 
 CY_ISR(InterrupRx){
     dato_bluetooht=UART_GetChar();//recibe el dato del bluetooth
+    
+    /*if((dato_bluetooht=='m')||(conteo>=1))
+    {
+        auxiliar=UART_GetChar(); 
+        muestra[conteo]=auxiliar -0x30;
+        conteo=conteo+1;
+        if (conteo>=3)
+        {
+            conteo=0;
+            tiempo_caja=(muestra[0]*1000)+(muestra[1]*100)+(muestra[2]*10)+(muestra[3]);
+            
+        }
+        
+    }
+    if((dato_bluetooht='T')||(conteo1>=1))
+    {
+        auxiliar=UART_GetChar();
+        muestra[conteo]=auxiliar-0x30;
+        conteo1=conteo1+1;
+        if(conteo1>3)
+        {
+            conteo1=0;
+            muestra_caja=(muestra[0]*1000)+(muestra[1]*100)+(muestra[2]*10)+(muestra[3]);
+        }
+    }
+    */
     /*
     fila=fila + 1;
     if(fila==15){
@@ -68,7 +99,7 @@ CY_ISR(InterrupRx){
     }
     LCD_Position(columna,fila);
     LCD_PutChar(dato_bluetooht);*/
-   // UART_PutChar(dato_bluetooht);///envio el dato recibido por bluetooth
+   //UART_PutChar(dato_bluetooht);///envio el dato recibido por bluetooth
 }
 
 int main(void)
@@ -106,25 +137,25 @@ int main(void)
     UART_PutString("\r");
     UART_PutString("add_button(16,4,7,O,o)");
     UART_PutString("\r");
-    UART_PutString("add_button(8,6,14,R,r)");
+    UART_PutString("add_button(8,6,14,r,)");
     UART_PutString("\r");
-    UART_PutString("add_button(14,6,15,Y,y)");
+    UART_PutString("add_button(14,6,15,Y,)");
     UART_PutString("\r");
-    UART_PutString("add_button(2,6,16,G,g)");
+    UART_PutString("add_button(2,6,16,G,)");
     UART_PutString("\r");
-    UART_PutString("add_button(2,3,17,B,b)");
+    UART_PutString("add_button(2,3,17,B,)");
     UART_PutString("\r");
-    UART_PutString("add_roll_graph(12,7,5,0.0,100.0,100,t,temperatura,X-Axis,Y-Axis,1,0,1,0,1,1,medium,none,1,1,42,97,222)");
+    UART_PutString("add_roll_graph(12,7,5,0.0,100.0,100,t,voltaje,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,97,222)");
     UART_PutString("\r");
-    UART_PutString("add_roll_graph(6,7,5,0.0,100.0,100,G,voltaje,X-Axis,Y-Axis,1,0,1,0,1,1,medium,none,1,1,42,255,0)");
+    UART_PutString("add_roll_graph(6,7,5,10.0,40.0,100,G,temperatura,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,255,0)");
     UART_PutString("\r");
     UART_PutString("add_roll_graph(0,7,5,0.0,100.0,100,v,velocidad motor,X-Axis,Y-Axis,1,0,1,0,1,1,medium,none,1,1,255,0,0)");
     UART_PutString("\r");
     UART_PutString("add_monitor(7,1,8,,1)");
     UART_PutString("\r");
-    UART_PutString("add_send_box(2,1,3,,,)");
+    UART_PutString("add_send_box(2,1,3,,m,)");
     UART_PutString("\r");
-    UART_PutString("add_send_box(2,2,3,,,)");
+    UART_PutString("add_send_box(2,2,3,,T,)");
     UART_PutString("\r");
     UART_PutString("set_panel_notes(,,,)");
     UART_PutString("\r");
@@ -134,11 +165,11 @@ int main(void)
     UART_PutString("\r");
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         /////////variables del programa de paneles
-    int update_interval=100; // time interval in ms for updating panel indicators 
+    //tiempo_caja=500; // time interval in ms for updating panel indicators 
     unsigned long last_time=0; // time of last update
-    int16 trace1; // Roll Graph trace value
+    int16 temp; // Roll Graph trace value
     unsigned long t=0;
-    
+     
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
@@ -147,9 +178,6 @@ int main(void)
         /* Place your application code here. */
                 /* Place your application code here. */
         
-        if(dato_bluetooht=='X'){
-            
-        }
         if(dato_bluetooht=='S'){
             
         }      
@@ -161,10 +189,11 @@ int main(void)
         if(dato_bluetooht=='r'){
             ADC_StartConvert();
             ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
-            trace1=ADC_GetResult16();
+            temp=100*ADC_GetResult8()/255;
+            
             // actualiza Roll Graph
             x=x+1;
-            sprintf(temperatura,"*G%d,%d*",trace1,x);
+            sprintf(temperatura,"*G%d,%d*",temp,x);
             UART_PutString(temperatura);
         }
         if(dato_bluetooht=='Y'){ //Button Pressed
@@ -177,9 +206,8 @@ int main(void)
         if(dato_bluetooht=='B'){ //Button Pressed
       //<--- Insert button pressed code here 
         }
-        CyDelay(500);
+        CyDelay(tiempo_caja);
         LCD_Position(0,0);
-        
         LCD_PutChar(dato_bluetooht);
             
         }
