@@ -18,19 +18,18 @@
 const char acText[]="hello world\r\n";
 FS_FILE *pFile;
 
-char dato_bluetooht;
+volatile char dato_bluetooht;
 char temperatura[8];
+volatile int32 conteo_total=0 ,numero_de_muestra=6;
+volatile int16 tiempo_muestreo=1, tiempo_total=1;
 int16 x=0;
 int8 dato_proceso;
 int fila=0;
 int columna=0;
 char acBuffer[100];
 volatile int8 conteo=0;
-int8 conteo1=0;
 char muestra[4];
-int16 tiempo_caja=500;
-int16 muestra_caja;
-volatile bool bandera_muestra=false;
+volatile bool bandera=false;
 volatile char  auxiliar;
 
 
@@ -66,77 +65,54 @@ void ReadSD(){
 CY_ISR(InterrupRx){
     dato_bluetooht=UART_GetChar();//recibe el dato del bluetooth
     switch (dato_bluetooht){
-        case 'r':
-        {
-            break;            
-        }
         case 'm':
         {
-            bandera_muestra=true;
+            bandera=true;
             break;
         }
         case 'f':
         {
-        LCD_Position(0,12);
-        LCD_PrintNumber(conteo);
-        unsigned char i=0;
-        fila=1;
-        columna=0;
-        while(conteo>i){
-            LCD_Position(1,i);
-            LCD_PutChar(muestra[i]);
-            i++;
-            bandera_muestra=false;
+            unsigned char i=1;
+            tiempo_muestreo=muestra[0];
+            while(conteo>i){
+                tiempo_muestreo=muestra[i]+10*tiempo_muestreo;        
+                i++;
+            }
+            LCD_Position(1,11);
+            LCD_PrintNumber(tiempo_muestreo);
+            conteo=0;
+            conteo_total=0;
+            numero_de_muestra=(60*tiempo_total)/tiempo_muestreo;//60 para manejarlo en minutos por
+            bandera=false;
+            break;
         }
-        conteo=0;        
+        
+        case 'j':
+        {
+            unsigned char i=1;
+            tiempo_total=muestra[0];
+            while(conteo>i){
+                tiempo_total=muestra[i]+10*tiempo_total;        
+                i++;
+            }
+            LCD_Position(0,11);
+            LCD_PrintNumber(tiempo_total);
+            conteo=0;       
+            conteo_total=0;
+            numero_de_muestra=(60*tiempo_total)/tiempo_muestreo;//60 para manejarlo en minutos por
+            bandera=false;
+            break;
         }
         default:
         {
-            if (bandera_muestra==true)
+            if (bandera==true)
             {
-                muestra[conteo]=dato_bluetooht;
+                muestra[conteo]=dato_bluetooht-0x30;
                 conteo=conteo+1;  
-                }
+            }
             break;
         }
     }
-    /*if((dato_bluetooht=='m')||(conteo>=1))
-    {
-        auxiliar=UART_GetChar(); 
-        muestra[conteo]=auxiliar -0x30;
-        conteo=conteo+1;
-        if (conteo>=3)
-        {
-            conteo=0;
-            tiempo_caja=(muestra[0]*1000)+(muestra[1]*100)+(muestra[2]*10)+(muestra[3]);
-            
-        }
-        
-    }
-    if((dato_bluetooht='T')||(conteo1>=1))
-    {
-        auxiliar=UART_GetChar();
-        muestra[conteo]=auxiliar-0x30;
-        conteo1=conteo1+1;
-        if(conteo1>3)
-        {
-            conteo1=0;
-            muestra_caja=(muestra[0]*1000)+(muestra[1]*100)+(muestra[2]*10)+(muestra[3]);
-        }
-    }
-    */
-    /*
-    fila=fila + 1;
-    if(fila==15){
-        fila=0;
-        columna=columna+1;
-    }
-    if(columna>1){
-        columna=0;
-    }
-    LCD_Position(columna,fila);
-    LCD_PutChar(dato_bluetooht);*/
-   //UART_PutChar(dato_bluetooht);///envio el dato recibido por bluetooth
 }
 
 int main(void)
@@ -149,7 +125,9 @@ int main(void)
     FS_Init();// Inicia Sistema de archivos
     ADC_Start();
     LCD_Position(0,0);
-    LCD_PrintString("CBluetooth");
+    LCD_PrintString("t total");
+    LCD_Position(1,0);
+    LCD_PrintString("t muestra");
     //////////////////////////////////////////////////////////////////////////////////////
                         /////construccion del panel en la app
     UART_PutString("*.kwl");
@@ -174,13 +152,13 @@ int main(void)
     UART_PutString("\r");
     UART_PutString("add_button(16,4,7,O,o)");
     UART_PutString("\r");
-    UART_PutString("add_button(8,6,14,r,)");
+    UART_PutString("add_button(8,6,14,r,r)");
     UART_PutString("\r");
-    UART_PutString("add_button(14,6,15,Y,)");
+    UART_PutString("add_button(14,6,15,Y,Y)");
     UART_PutString("\r");
-    UART_PutString("add_button(2,6,16,G,)");
+    UART_PutString("add_button(2,6,16,G,G)");
     UART_PutString("\r");
-    UART_PutString("add_button(2,3,17,B,)");
+    UART_PutString("add_button(2,3,17,B,B)");
     UART_PutString("\r");
     UART_PutString("add_roll_graph(12,7,5,0.0,100.0,100,t,voltaje,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,97,222)");
     UART_PutString("\r");
@@ -190,9 +168,9 @@ int main(void)
     UART_PutString("\r");
     UART_PutString("add_monitor(7,1,8,,1)");
     UART_PutString("\r");
-    UART_PutString("add_send_box(2,1,3,,T,)");
+    UART_PutString("add_send_box(2,1,3,,m,j)");
     UART_PutString("\r");
-    UART_PutString("add_send_box(2,2,3,,m,)");
+    UART_PutString("add_send_box(2,2,3,,m,f)");
     UART_PutString("\r");
     UART_PutString("set_panel_notes(,,,)");
     UART_PutString("\r");
@@ -202,54 +180,37 @@ int main(void)
     UART_PutString("\r");
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         /////////variables del programa de paneles
-    //tiempo_caja=500; // time interval in ms for updating panel indicators 
-    unsigned long last_time=0; // time of last update
+    //tiempo_muestreo=500; // time interval in ms for updating panel indicators 
     int16 temp; // Roll Graph trace value
-    unsigned long t=0;
      
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
     for(;;)
     {
-        /* Place your application code here. */
-                /* Place your application code here. */
         
-        if(dato_bluetooht=='S'){
-            
-        }      
+        if(numero_de_muestra>conteo_total){    
         
-        if(dato_bluetooht=='O'){ //Button Pressed
-      //<--- Insert button pressed code here 
-        }
-        
-        if(dato_bluetooht=='r'){
+            if(dato_bluetooht=='r'){
+            CyDelay(tiempo_muestreo*995);
             ADC_StartConvert();
             ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
-            temp=100*ADC_GetResult8()/255;
-            
-            // actualiza Roll Graph
+            temp=100*ADC_GetResult8()/255; // actualiza Roll Graph
             x=x+1;
             sprintf(temperatura,"*G%d,%d*",temp,x);
             UART_PutString(temperatura);
+            
+            conteo_total++; 
         }
         if(dato_bluetooht=='Y'){ //Button Pressed
       //<--- Insert button pressed code here 
         }
-        
         if(dato_bluetooht=='G'){ //Button Pressed
       //<--- Insert button pressed code here 
+        } 
         }
-        if(dato_bluetooht=='B'){ //Button Pressed
-      //<--- Insert button pressed code here 
-        }
-        CyDelay(tiempo_caja);
-        LCD_Position(0,0);
-        LCD_PutChar(dato_bluetooht);
-            
-        }
-
     }
+ }
 
 
 /* [] END OF FILE */
