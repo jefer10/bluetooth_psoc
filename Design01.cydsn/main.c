@@ -1,11 +1,10 @@
 /* ========================================
  *
- * Copyright YOUR COMPANY, THE YEAR
+ * Copyright Jeferson Rondon - Nicolas Pastran,2019
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
  * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
  *
  * ========================================
 */
@@ -15,51 +14,112 @@
 #include <stdbool.h>
 
 
-const char acText[]="hello world\r\n";
-FS_FILE *pFile;
+const char ctemp[]= "T,";//Temperatura
+const char cvolt[]= "V,";//Voltaje
+const char cspeed[]="S,";//Speed Velocidad
+const char ctime[]= "T\r\n";//
 
+//Variables de manejo de archivos
+FS_FILE *pFile;
+char file[15];
+char acBuffer[200];
+//Varibles de interupcion
 volatile char dato_bluetooht;
+volatile int8 conteo=0;
+char muestra[6];
+
+//Variables usadas en el main
 char temperatura[8];
 volatile int32 conteo_total=0 ,numero_de_muestra=6;
 volatile int16 tiempo_muestreo=1, tiempo_total=1;
-int16 x=0;
-int8 dato_proceso;
-int fila=0;
-int columna=0;
-char acBuffer[100];
-volatile int8 conteo=0;
-char muestra[4];
+
 volatile bool bandera=false;
-volatile char  auxiliar;
 
+int16 x=0;
 
-void WriteSD(){
-    pFile = FS_FOpen("datos.txt", "a");
-    if (pFile != 0) {
-        LCD_PrintString("Si escribio");
-        FS_Write(pFile, acText, strlen(acText));
-        FS_FClose(pFile);
-    }else{
-        LCD_PrintString("No escribio");
+void WriteHead(char sourse){
+    
+    char i=0;
+    while(pFile == 0){
+        sprintf(file,"Datos%d.txt",i);
+        pFile = FS_FOpen(file, "r");//Intenta abrir el archivo, si puede permanece en el while
+        i++;
     }
+    pFile = FS_FOpen(file, "a");// Crea el nuevo archivo
+    
+    if (pFile != 0) {
+        if(sourse==0x00){
+        FS_Write(pFile, ctemp, strlen(ctemp));// Escribe la cabecera cotrespondiente a Temp
+        }
+        else if(sourse==0x01){
+        FS_Write(pFile, cvolt, strlen(cvolt));// Escribe la cabecera cotrespondiente a Volt
+        }
+        else{//0x11
+        FS_Write(pFile, cspeed, strlen(cspeed));// Escribe la cabecera cotrespondiente a Velo
+        }
+        FS_Write(pFile, ctime, strlen(ctime));//Simepre escribe la de tiempo
+        FS_FClose(pFile);
+    }
+    else{
+        LCD_PrintString("Eror de escritura");
+    }
+  
 }
+
+void WriteData(int16 *variable,bool t){
+    FS_FOpen(file, "r");
+    char aux[15];
+    if (pFile != 0) {
+        if(t){
+            sprintf(aux,"%i\r\n",*variable);
+        }
+        else{
+            sprintf(aux,"%i,",*variable);
+        }
+        FS_Write(pFile, ctemp, strlen(ctemp));
+    }else{
+        LCD_PrintString("Eror de escritura");
+    }
+} // Fin de Write Data Modo de llamar int16 dato;WriteData(&dato,1);
 
 void ReadSD(){
-    pFile = FS_FOpen("datos.txt", "r");
+    pFile = FS_FOpen(file,"r");
     int i;
     if (pFile != 0) {
-        LCD_Position(0,0);
-            do{
-            i = FS_FRead(acBuffer, 1, sizeof(acBuffer) - 1, pFile);
-            }while (i);
-            FS_FClose(pFile);
-            i=0;
-            while(acBuffer[i]!='\r'){
-                LCD_PutChar(acBuffer[i]);
-                i++;
-            }
+        do{
+            i = FS_FRead(acBuffer, 1, sizeof(acBuffer) - 1, pFile);//Lee caracter por caracter y los pasa a la ram
+        }while (i);
+        FS_FClose(pFile);
     }
 }
+
+void SendFile(){
+    unsigned int i=0;
+    char aux='T';
+    while(acBuffer[i]!='\r'){
+        switch(acBuffer[i]){
+        case 'T':
+            aux='T';
+            break;
+        case 'V':
+            aux='V';
+            break;
+        case 'S':
+            aux='S';
+            break;
+        default:
+            break;
+        }      
+    i++;
+    }
+    i=1;
+    while(sizeof(acBuffer)>i){
+            sprintf(temperatura,"*%c%d,%d*",aux,acBuffer[4*i],acBuffer[4*i+1]);
+            UART_PutString(temperatura);
+    }
+
+}
+
 
 
 CY_ISR(InterrupRx){
@@ -102,6 +162,9 @@ CY_ISR(InterrupRx){
             numero_de_muestra=(60*tiempo_total)/tiempo_muestreo;//60 para manejarlo en minutos por
             bandera=false;
             break;
+        }
+        case 'd':{
+            FS_Remove (file);//Borra el ultimo archivo
         }
         default:
         {
@@ -160,11 +223,11 @@ int main(void)
     UART_PutString("\r");
     UART_PutString("add_button(2,3,17,B,B)");
     UART_PutString("\r");
-    UART_PutString("add_roll_graph(12,7,5,0.0,100.0,100,t,voltaje,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,97,222)");
+    UART_PutString("add_roll_graph(12,7,5,0.0,100.0,100,V,voltaje,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,97,222)");
     UART_PutString("\r");
-    UART_PutString("add_roll_graph(6,7,5,10.0,40.0,100,G,temperatura,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,255,0)");
+    UART_PutString("add_roll_graph(6,7,5,10.0,40.0,100,T,temperatura,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,255,0)");
     UART_PutString("\r");
-    UART_PutString("add_roll_graph(0,7,5,0.0,100.0,100,v,velocidad motor,X-Axis,Y-Axis,1,0,1,0,1,1,medium,none,1,1,255,0,0)");
+    UART_PutString("add_roll_graph(0,7,5,0.0,100.0,100,S,velocidad motor,X-Axis,Y-Axis,1,0,1,0,1,1,medium,none,1,1,255,0,0)");
     UART_PutString("\r");
     UART_PutString("add_monitor(7,1,8,,1)");
     UART_PutString("\r");
@@ -197,9 +260,8 @@ int main(void)
             ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
             temp=100*ADC_GetResult8()/255; // actualiza Roll Graph
             x=x+1;
-            sprintf(temperatura,"*G%d,%d*",temp,x);
+            sprintf(temperatura,"*T%d,%d*",temp,x);
             UART_PutString(temperatura);
-            
             conteo_total++; 
         }
         if(dato_bluetooht=='Y'){ //Button Pressed

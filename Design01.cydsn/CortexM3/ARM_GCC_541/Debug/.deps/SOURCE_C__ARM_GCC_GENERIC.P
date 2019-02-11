@@ -1,106 +1,106 @@
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/CortexM3/ARM_GCC_541/Debug/main.o : C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/ADC.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/ADC_IRQ.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/ADC_theACLK.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/CyDmac.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/CyFlash.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/CyLib.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/CySpc.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/LCD.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/LCD_LCDPort.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/LCD_LCDPort_aliases.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/Pin_ADC.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/Pin_ADC_aliases.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/UART.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/UART_IntClock.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cmsis_armcc.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cmsis_compiler.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cmsis_gcc.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/core_cm3.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/core_cm3_psoc5.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cyPm.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cy_em_eeprom.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cydevice.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cydevice_trm.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cydisabledsheets.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cyfitter.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cypins.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cytypes.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_Clock_1.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0_CS.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0_CS_aliases.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0_PVT.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_miso0.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_miso0_aliases.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_mosi0.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_mosi0_aliases.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_sclk0.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_sclk0_aliases.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/isrRX.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/project.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/FS.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/FS_ConfDefaults.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/FS_Dev.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/FS_Storage.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/FS_Types.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/Global.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/MMC_X_HW.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/SEGGER.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/emf32nOS/FS_Conf.h C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/main.c 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/CortexM3/ARM_GCC_541/Debug/main.o : C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/ADC.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/ADC_IRQ.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/ADC_theACLK.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/CyDmac.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/CyFlash.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/CyLib.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/CySpc.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/LCD.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/LCD_LCDPort.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/LCD_LCDPort_aliases.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/Pin_ADC.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/Pin_ADC_aliases.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/UART.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/UART_IntClock.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cmsis_armcc.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cmsis_compiler.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cmsis_gcc.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/core_cm3.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/core_cm3_psoc5.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cyPm.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cy_em_eeprom.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cydevice.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cydevice_trm.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cydisabledsheets.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cyfitter.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cypins.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cytypes.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_Clock_1.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0_CS.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0_CS_aliases.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0_PVT.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_miso0.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_miso0_aliases.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_mosi0.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_mosi0_aliases.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_sclk0.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_sclk0_aliases.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/isrRX.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/project.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/FS.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/FS_ConfDefaults.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/FS_Dev.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/FS_Storage.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/FS_Types.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/Global.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/MMC_X_HW.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/SEGGER.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/emf32nOS/FS_Conf.h C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/main.c 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/ADC.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/ADC.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/ADC_IRQ.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/ADC_IRQ.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/ADC_theACLK.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/ADC_theACLK.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/CyDmac.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/CyDmac.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/CyFlash.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/CyFlash.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/CyLib.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/CyLib.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/CySpc.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/CySpc.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/LCD.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/LCD.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/LCD_LCDPort.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/LCD_LCDPort.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/LCD_LCDPort_aliases.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/LCD_LCDPort_aliases.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/Pin_ADC.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/Pin_ADC.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/Pin_ADC_aliases.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/Pin_ADC_aliases.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/UART.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/UART.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/UART_IntClock.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/UART_IntClock.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cmsis_armcc.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cmsis_armcc.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cmsis_compiler.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cmsis_compiler.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cmsis_gcc.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cmsis_gcc.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/core_cm3.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/core_cm3.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/core_cm3_psoc5.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/core_cm3_psoc5.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cyPm.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cyPm.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cy_em_eeprom.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cy_em_eeprom.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cydevice.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cydevice.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cydevice_trm.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cydevice_trm.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cydisabledsheets.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cydisabledsheets.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cyfitter.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cyfitter.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cypins.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cypins.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/cytypes.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/cytypes.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_Clock_1.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_Clock_1.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0_CS.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0_CS.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0_CS_aliases.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0_CS_aliases.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0_PVT.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_SPI0_PVT.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_miso0.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_miso0.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_miso0_aliases.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_miso0_aliases.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_mosi0.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_mosi0.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_mosi0_aliases.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_mosi0_aliases.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_sclk0.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_sclk0.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/emFile_sclk0_aliases.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/emFile_sclk0_aliases.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/isrRX.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/isrRX.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/Generated_Source/PSoC5/project.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/Generated_Source/PSoC5/project.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/FS.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/FS.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/FS_ConfDefaults.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/FS_ConfDefaults.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/FS_Dev.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/FS_Dev.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/FS_Storage.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/FS_Storage.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/FS_Types.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/FS_Types.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/Global.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/Global.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/MMC_X_HW.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/MMC_X_HW.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/SEGGER.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/SEGGER.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/emFile_V322c/Code/Include/PSoC5/emf32nOS/FS_Conf.h : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/emFile_V322c/Code/Include/PSoC5/emf32nOS/FS_Conf.h : 
 
-C:/Users/jefer/OneDrive/Documentos/PSoC\ Creator/modulo_bluetooht/Design01.cydsn/main.c : 
+C:/Users/nikod/Documents/PSoC\ Creator/bluetooth_psoc/Design01.cydsn/main.c : 
 
