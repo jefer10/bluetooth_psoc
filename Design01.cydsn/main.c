@@ -17,14 +17,14 @@
 const char ctemp[]= "T,";//Temperatura
 const char cvolt[]= "V,";//Voltaje
 const char cspeed[]="S,";//Speed Velocidad
-const char ctime[]= "T\r\n";//
+const char ctime[]= "t\r\n";//
 
 //Variables de manejo de archivos
 FS_FILE *pFile;
-char file[15];
+char file[15]="datos.txt";
 char acBuffer[200];
 //Varibles de interupcion
-volatile char dato_bluetooht;
+volatile char dato_bluetooht='0';
 volatile int8 conteo=0;
 char muestra[6];
 
@@ -40,12 +40,13 @@ int16 x=0;
 void WriteHead(char sourse){
     
     char i=0;
-    while(pFile == 0){
-        sprintf(file,"Datos%d.txt",i);
-        pFile = FS_FOpen(file, "r");//Intenta abrir el archivo, si puede permanece en el while
+    pFile = FS_FOpen(file,"r");
+    while(*pFile==34340){
+        sprintf(file,"DATOS%d_.txt",i);
+        pFile = FS_FOpen(file,"r");//Intenta abrir el archivo, si puede permanece en el while
         i++;
     }
-    pFile = FS_FOpen(file, "a");// Crea el nuevo archivo
+    pFile = FS_FOpen("INIT.txt", "a");// Crea el nuevo archivo
     
     if (pFile != 0) {
         if(sourse==0x00){
@@ -70,13 +71,13 @@ void WriteData(int16 *variable,bool t){
     FS_FOpen(file, "r");
     char aux[15];
     if (pFile != 0) {
-        if(t){
-            sprintf(aux,"%i\r\n",*variable);
+        if(t==1){
+            sprintf(aux,"%d\r\n",*variable);
         }
         else{
-            sprintf(aux,"%i,",*variable);
+            sprintf(aux,"%d,",*variable);
         }
-        FS_Write(pFile, ctemp, strlen(ctemp));
+        FS_Write(pFile, aux, strlen(aux));
     }else{
         LCD_PrintString("Eror de escritura");
     }
@@ -130,6 +131,12 @@ CY_ISR(InterrupRx){
             bandera=true;
             break;
         }
+        case 'r':{
+            WriteHead(0x00);//Crea cabecera de temperatura
+            //LCD_ClearDisplay();
+            LCD_PrintString("Inicio");            
+            break;
+        }
         case 'f':
         {
             unsigned char i=1;
@@ -144,6 +151,7 @@ CY_ISR(InterrupRx){
             conteo_total=0;
             numero_de_muestra=(60*tiempo_total)/tiempo_muestreo;//60 para manejarlo en minutos por
             bandera=false;
+            
             break;
         }
         
@@ -161,8 +169,10 @@ CY_ISR(InterrupRx){
             conteo_total=0;
             numero_de_muestra=(60*tiempo_total)/tiempo_muestreo;//60 para manejarlo en minutos por
             bandera=false;
+            
             break;
         }
+        
         case 'd':{
             FS_Remove (file);//Borra el ultimo archivo
         }
@@ -251,24 +261,21 @@ int main(void)
 
     for(;;)
     {
-        
-        if(numero_de_muestra>conteo_total){    
-        
+        if(numero_de_muestra!=conteo_total){
             if(dato_bluetooht=='r'){
             CyDelay(tiempo_muestreo*995);
             ADC_StartConvert();
             ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
             temp=100*ADC_GetResult8()/255; // actualiza Roll Graph
+            WriteData(&temp,0);
             x=x+1;
+            WriteData(&x,0);
             sprintf(temperatura,"*T%d,%d*",temp,x);
             UART_PutString(temperatura);
             conteo_total++; 
-        }
-        if(dato_bluetooht=='Y'){ //Button Pressed
-      //<--- Insert button pressed code here 
-        }
-        if(dato_bluetooht=='G'){ //Button Pressed
-      //<--- Insert button pressed code here 
+        }else{
+            x=0;
+            conteo_total=0;
         } 
         }
     }
