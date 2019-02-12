@@ -21,7 +21,7 @@ const char ctime[]= "t\r\n";//
 
 //Variables de manejo de archivos
 FS_FILE *pFile;
-char file[15]="datos.txt";
+char file[15]="DATOS.txt";
 char acBuffer[200];
 //Varibles de interupcion
 volatile char dato_bluetooht='0';
@@ -38,16 +38,14 @@ volatile bool bandera=false;
 int16 x=0;
 
 void WriteHead(char sourse){
-    
     char i=0;
-    pFile = FS_FOpen(file,"r");
-    while(*pFile==34340){
-        sprintf(file,"DATOS%d_.txt",i);
+    while(pFile!=0){
+        sprintf(file,"DATOS%d.txt",i);
         pFile = FS_FOpen(file,"r");//Intenta abrir el archivo, si puede permanece en el while
         i++;
     }
-    pFile = FS_FOpen("INIT.txt", "a");// Crea el nuevo archivo
-    
+    pFile = FS_FOpen(file,"a");// Crea el nuevo archivo
+    pFile = FS_FOpen(file,"w");// Abre para escribir
     if (pFile != 0) {
         if(sourse==0x00){
         FS_Write(pFile, ctemp, strlen(ctemp));// Escribe la cabecera cotrespondiente a Temp
@@ -67,22 +65,17 @@ void WriteHead(char sourse){
   
 }
 
-void WriteData(int16 *variable,bool t){
+/*
+void WriteData(){
     FS_FOpen(file, "r");
-    char aux[15];
+    char aux[15]="Trama";
     if (pFile != 0) {
-        if(t==1){
-            sprintf(aux,"%d\r\n",*variable);
-        }
-        else{
-            sprintf(aux,"%d,",*variable);
-        }
-        FS_Write(pFile, aux, strlen(aux));
+        FS_Write(pFile, ctemp, strlen(ctemp));// Escribe la cabecera cotrespondiente a Temp
     }else{
         LCD_PrintString("Eror de escritura");
     }
 } // Fin de Write Data Modo de llamar int16 dato;WriteData(&dato,1);
-
+*/
 void ReadSD(){
     pFile = FS_FOpen(file,"r");
     int i;
@@ -121,8 +114,6 @@ void SendFile(){
 
 }
 
-
-
 CY_ISR(InterrupRx){
     dato_bluetooht=UART_GetChar();//recibe el dato del bluetooth
     switch (dato_bluetooht){
@@ -133,7 +124,7 @@ CY_ISR(InterrupRx){
         }
         case 'r':{
             WriteHead(0x00);//Crea cabecera de temperatura
-            //LCD_ClearDisplay();
+            LCD_ClearDisplay();
             LCD_PrintString("Inicio");            
             break;
         }
@@ -267,11 +258,16 @@ int main(void)
             ADC_StartConvert();
             ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
             temp=100*ADC_GetResult8()/255; // actualiza Roll Graph
-            WriteData(&temp,0);
             x=x+1;
-            WriteData(&x,0);
             sprintf(temperatura,"*T%d,%d*",temp,x);
             UART_PutString(temperatura);
+            sprintf(temperatura,"%d,%d\r\n",temp,x);
+            FS_FOpen(file, "w");
+            if (pFile != 0) {
+                FS_Write(pFile, temperatura, strlen(temperatura));// Escribe la cabecera cotrespondiente a Temp
+            }else{
+                LCD_PrintString("Error de escritura");
+            }
             conteo_total++; 
         }else{
             x=0;
