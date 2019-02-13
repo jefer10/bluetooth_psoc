@@ -1,5 +1,5 @@
 -- Project:   Design01
--- Generated: 02/10/2019 22:10:41
+-- Generated: 02/13/2019 00:25:47
 -- PSoC Creator  4.2
 
 ENTITY Design01 IS
@@ -236,7 +236,7 @@ ARCHITECTURE __DEFAULT__ OF Design01 IS
     ATTRIBUTE lib_model OF \emFile:SPI0_CS(0)\ : LABEL IS "iocell13";
     ATTRIBUTE Location OF \emFile:SPI0_CS(0)\ : LABEL IS "P1[4]";
     ATTRIBUTE lib_model OF Pin_ADC(0) : LABEL IS "iocell14";
-    ATTRIBUTE Location OF Pin_ADC(0) : LABEL IS "P0[7]";
+    ATTRIBUTE Location OF Pin_ADC(0) : LABEL IS "P3[2]";
     ATTRIBUTE lib_model OF Net_2 : LABEL IS "macrocell2";
     ATTRIBUTE Location OF Net_2 : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \UART:BUART:counter_load_not\ : LABEL IS "macrocell3";
@@ -283,7 +283,7 @@ ARCHITECTURE __DEFAULT__ OF Design01 IS
     ATTRIBUTE lib_model OF \emFile:SPI0:BSPIM:sR8:Dp:u0\ : LABEL IS "datapathcell4";
     ATTRIBUTE Location OF \emFile:SPI0:BSPIM:sR8:Dp:u0\ : LABEL IS "U(1,1)";
     ATTRIBUTE Location OF \ADC:IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
-    ATTRIBUTE Location OF \ADC:ADC_SAR\ : LABEL IS "F(SAR,0)";
+    ATTRIBUTE Location OF \ADC:ADC_SAR\ : LABEL IS "F(SAR,1)";
     ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell15";
     ATTRIBUTE Location OF \UART:BUART:txn\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell16";

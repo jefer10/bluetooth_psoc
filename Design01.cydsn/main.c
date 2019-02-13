@@ -21,7 +21,7 @@ const char ctime[]= "t\r\n";//
 
 //Variables de manejo de archivos
 FS_FILE *pFile;
-char file[15]="DATOS.txt";
+volatile char file[15]="DATOS0.txt";
 char acBuffer[200];
 //Varibles de interupcion
 volatile char dato_bluetooht='0';
@@ -30,12 +30,11 @@ char muestra[6];
 
 //Variables usadas en el main
 char temperatura[8];
-volatile int32 conteo_total=0 ,numero_de_muestra=6;
+volatile int16 conteo_total=0 ,numero_de_muestra=6;
 volatile int16 tiempo_muestreo=1, tiempo_total=1;
 
 volatile bool bandera=false;
 
-int16 x=0;
 
 void WriteHead(char sourse){
     char i=0;
@@ -43,9 +42,9 @@ void WriteHead(char sourse){
         sprintf(file,"DATOS%d.txt",i);
         pFile = FS_FOpen(file,"r");//Intenta abrir el archivo, si puede permanece en el while
         i++;
-    }
+    } 
+
     pFile = FS_FOpen(file,"a");// Crea el nuevo archivo
-    pFile = FS_FOpen(file,"w");// Abre para escribir
     if (pFile != 0) {
         if(sourse==0x00){
         FS_Write(pFile, ctemp, strlen(ctemp));// Escribe la cabecera cotrespondiente a Temp
@@ -60,7 +59,7 @@ void WriteHead(char sourse){
         FS_FClose(pFile);
     }
     else{
-        LCD_PrintString("Eror de escritura");
+        LCD_PrintString("E1");
     }
   
 }
@@ -122,10 +121,8 @@ CY_ISR(InterrupRx){
             bandera=true;
             break;
         }
-        case 'r':{
-            WriteHead(0x00);//Crea cabecera de temperatura
-            LCD_ClearDisplay();
-            LCD_PrintString("Inicio");            
+        case 't':{
+            WriteHead(0x00);//Crea cabecera de temperatura          
             break;
         }
         case 'f':
@@ -189,9 +186,9 @@ int main(void)
     FS_Init();// Inicia Sistema de archivos
     ADC_Start();
     LCD_Position(0,0);
-    LCD_PrintString("t total");
+    LCD_PrintString("t total    1min");
     LCD_Position(1,0);
-    LCD_PrintString("t muestra");
+    LCD_PrintString("t muestra 10seg");
     //////////////////////////////////////////////////////////////////////////////////////
                         /////construccion del panel en la app
     UART_PutString("*.kwl");
@@ -204,8 +201,8 @@ int main(void)
     UART_PutString("\r");
     UART_PutString("add_text(0,1,medium,L,tiempo,245,240,245,)");
     UART_PutString("\r");
-    UART_PutString("add_text(0,3,medium,L,start,255,255,255,)");
-    UART_PutString("\r");
+//    UART_PutString("add_text(0,3,medium,L,start,255,255,255,)");
+//    UART_PutString("\r");
     UART_PutString("add_text(8,0,xlarge,L,proyecto Bluetooth,0,255,0,)");
     UART_PutString("\r");
     UART_PutString("add_button(16,1,21,1,4)");
@@ -216,17 +213,17 @@ int main(void)
     UART_PutString("\r");
     UART_PutString("add_button(16,4,7,O,o)");
     UART_PutString("\r");
-    UART_PutString("add_button(8,6,14,r,r)");
+    UART_PutString("add_button(8,6,14,,t)");
     UART_PutString("\r");
-    UART_PutString("add_button(14,6,15,Y,Y)");
+    UART_PutString("add_button(14,6,15,,s)");
     UART_PutString("\r");
-    UART_PutString("add_button(2,6,16,G,G)");
-    UART_PutString("\r");
-    UART_PutString("add_button(2,3,17,B,B)");
+    UART_PutString("add_button(2,6,16,,s)");
+//    UART_PutString("\r");
+//    UART_PutString("add_button(2,3,17,B,B)");
     UART_PutString("\r");
     UART_PutString("add_roll_graph(12,7,5,0.0,100.0,100,V,voltaje,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,97,222)");
     UART_PutString("\r");
-    UART_PutString("add_roll_graph(6,7,5,10.0,40.0,100,T,temperatura,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,255,0)");
+    UART_PutString("add_roll_graph(6,7,5,20.0,40.0,100,T,temperatura,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,255,0)");
     UART_PutString("\r");
     UART_PutString("add_roll_graph(0,7,5,0.0,100.0,100,S,velocidad motor,X-Axis,Y-Axis,1,0,1,0,1,1,medium,none,1,1,255,0,0)");
     UART_PutString("\r");
@@ -252,27 +249,35 @@ int main(void)
 
     for(;;)
     {
-        if(numero_de_muestra!=conteo_total){
-            if(dato_bluetooht=='r'){
-            CyDelay(tiempo_muestreo*995);
-            ADC_StartConvert();
-            ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
-            temp=100*ADC_GetResult8()/255; // actualiza Roll Graph
-            x=x+1;
-            sprintf(temperatura,"*T%d,%d*",temp,x);
-            UART_PutString(temperatura);
-            sprintf(temperatura,"%d,%d\r\n",temp,x);
-            FS_FOpen(file, "w");
-            if (pFile != 0) {
-                FS_Write(pFile, temperatura, strlen(temperatura));// Escribe la cabecera cotrespondiente a Temp
-            }else{
-                LCD_PrintString("Error de escritura");
-            }
-            conteo_total++; 
-        }else{
-            x=0;
-            conteo_total=0;
-        } 
+        
+        if(dato_bluetooht=='t'){
+            if(numero_de_muestra!=conteo_total){
+                    CyDelay(tiempo_muestreo*995);
+                    ADC_StartConvert();
+                    ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
+                    temp=100*ADC_GetResult8()/255; // actualiza Roll Graph
+                    sprintf(temperatura,"*T%d,%d*",temp,conteo_total);
+                    UART_PutString(temperatura);
+                    sprintf(temperatura,"%d,%d\r\n",temp,conteo_total);
+
+                    pFile=FS_FOpen(file, "a");
+                    if (pFile != 0) {
+                        FS_Write(pFile, temperatura, strlen(temperatura));// Escribe la cabecera cotrespondiente a Temp
+                    }else{
+                        LCD_PrintString("Error E");
+                    }
+                    FS_FClose(pFile);
+                    conteo_total++; 
+                }else{
+                    LCD_ClearDisplay();
+                    LCD_PrintString("Termino guardado");
+                    LCD_Position(1,0);
+                    LCD_PrintString("en: ");
+                    LCD_PrintString(file);
+                    conteo_total=0;
+                    dato_bluetooht='1';
+                    
+            } 
         }
     }
  }

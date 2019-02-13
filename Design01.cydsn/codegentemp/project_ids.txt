@@ -1,6 +1,6 @@
-C:\Users\nikod\Documents\PSoC Creator\bluetooth_psoc\Design01.cydsn\Design01.cyprj|69681670-37ca-4d6b-9342-f5265f3a648e
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|f6e6adec-11ef-472a-9663-b276175a262d
-C:\Users\nikod\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|88575ca1-146d-4c14-be09-d65bb9556bc5
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|abacc655-196d-4d26-93f2-9a0017ebf6f7
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|fee28435-290d-419c-a6f4-f21a69a327d5
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|7a5eeb3c-ab20-4017-a28a-87b30090b4e0
+C:\Users\nikod\Documents\PSoC Creator\bluetooth_psoc\Design01.cydsn\Design01.cyprj|d26b2ceb-881d-41f8-ab8c-3867b6523c7e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|6e85f429-a760-4e57-b2fd-bd10411737d6
+C:\Users\nikod\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|5eeb79b7-9674-4a1c-be03-d89ceeb67904
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|7e6d1cdd-e79f-45c4-94bd-8b98b76990dd
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|db929427-1b06-4a53-aa67-82517684ff7b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|d5a1bebc-e9ed-42e7-b933-60f20af55563
