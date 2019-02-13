@@ -29,7 +29,8 @@ volatile int8 conteo=0;
 char muestra[6];
 
 //Variables usadas en el main
-char temperatura[8];
+char temperatura[16];
+char voltaje[16];
 volatile int16 conteo_total=0 ,numero_de_muestra=6;
 volatile int16 tiempo_muestreo=1, tiempo_total=1;
 
@@ -81,6 +82,23 @@ void ReadSD(){
     }
 }
 
+void Termino(){
+
+        LCD_ClearDisplay();
+        LCD_PrintString("Termino guardado");
+        LCD_Position(1,0);
+        LCD_PrintString("en : ");
+        char j=0;
+        while(file[j]!='.'){
+        LCD_PutChar(file[j]);
+        j++;
+        }
+        conteo_total=0;
+        dato_bluetooht='1';
+
+}
+
+
 CY_ISR(frecu){
     conteo=Counter_ReadCounter();
     frecuencia=conteo;
@@ -125,8 +143,14 @@ CY_ISR(InterrupRx){
         }
         case 't':{
             LCD_ClearDisplay();
-            LCD_PrintString("Inicio");            
+            LCD_PrintString("Inicio Tempe");            
             WriteHead(0x00);//Crea cabecera de temperatura
+            break;
+        }
+        case 's':{
+            LCD_ClearDisplay();
+            LCD_PrintString("Inicio Voltaje");            
+            WriteHead(0x01);//Crea cabecera de temperatura
             break;
         }
         case 'f':
@@ -165,9 +189,11 @@ CY_ISR(InterrupRx){
             break;
         }
         
+        
         case 'd':{
             FS_Remove (file);//Borra el ultimo archivo
         }
+        
         default:
         {
             if (bandera==true)
@@ -189,6 +215,7 @@ int main(void)
     LCD_Start();
     FS_Init();// Inicia Sistema de archivos
     ADC_Start();
+    ADC2_Start();
     LCD_Position(0,0);
     LCD_PrintString("t total    1min");
     LCD_Position(1,0);
@@ -225,7 +252,7 @@ int main(void)
     UART_PutString("\r");
     UART_PutString("add_button(2,3,17,B,)");
     UART_PutString("\r");
-    UART_PutString("add_roll_graph(12,7,5,0.0,100.0,100,V,voltaje,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,97,222)");
+    UART_PutString("add_roll_graph(12,7,5,-1.0,5.0,100,V,voltaje,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,97,222)");
     UART_PutString("\r");
     UART_PutString("add_roll_graph(6,7,5,10.0,40.0,100,T,temperatura,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,255,0)");
     UART_PutString("\r");
@@ -259,7 +286,7 @@ int main(void)
                 CyDelay(tiempo_muestreo*995);
                 ADC_StartConvert();
                 ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
-                temp=100*ADC_GetResult8()/255; // actualiza Roll Graph
+                temp=80*ADC_GetResult8()/255; // actualiza Roll Graph
                 sprintf(temperatura,"*T%d,%d*",temp,conteo_total);
                 UART_PutString(temperatura);
                 sprintf(temperatura,"%d,%d\r\n",temp,conteo_total);
@@ -283,7 +310,42 @@ int main(void)
                     }
                     conteo_total=0;
                     dato_bluetooht='1';
-            } 
+            }  
+        }
+        if(dato_bluetooht=='s')
+        {
+            if(numero_de_muestra!=conteo_total){
+                CyDelay(tiempo_muestreo*995);
+                ADC2_StartConvert();
+                ADC2_IsEndConversion(ADC2_WAIT_FOR_RESULT);
+                temp=5000*ADC2_GetResult16()/255; // actualiza Roll Graph
+                sprintf(voltaje,"*V%d,%d*",temp,conteo_total);
+                UART_PutString(voltaje);
+                sprintf(voltaje,"%d,%d\r\n",temp,conteo_total);
+                LCD_Position(0,0);
+                LCD_PrintNumber(temp);
+                FS_FOpen(file, "a");
+                if (pFile != 0) {
+                    FS_Write(pFile, voltaje, strlen(voltaje));// Escribe la cabecera cotrespondiente a Temp
+                }else{
+                    LCD_PrintString("Error");
+                }
+                FS_FClose(pFile);
+                conteo_total++; 
+        }else{
+            LCD_ClearDisplay();
+                    LCD_PrintString("Termino guardado");
+                    LCD_Position(1,0);
+                    LCD_PrintString("en : ");
+                    char j=0;
+                    while(file[j]!='.'){
+                    LCD_PutChar(file[j]);
+                    j++;
+                    }
+                    conteo_total=0;
+                    dato_bluetooht='1';
+        }
+        
         }
     }
  }

@@ -251,6 +251,8 @@
   <Data key="DataVersionKey" value="2" />
   <Group key="DWRInstGuidMapping">
     <Group key="Pin">
+      <Data key="1e904c6d-074a-4bdf-93ae-50552a765376/16a808f6-2e13-45b9-bce0-b001c8655113" value="ADC2_Bypass" />
+      <Data key="2c56583b-e411-4532-a6e5-ce4325fe4334" value="Pin_ADC2" />
       <Data key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba" value="foto_transistor" />
       <Data key="9ecf0d35-b04b-4575-a313-bed04cd0d6de/ed092b9b-d398-4703-be89-cebf998501f6" value="LCD_LCDPort" />
       <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="Rx_1" />
@@ -3346,6 +3348,11 @@
     </Group>
   </Group>
   <Group key="Pin2">
+    <Group key="2c56583b-e411-4532-a6e5-ce4325fe4334">
+      <Group key="0">
+        <Data key="Port Format" value="2,1" />
+      </Group>
+    </Group>
     <Group key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba">
       <Group key="0">
         <Data key="Port Format" value="0,0" />

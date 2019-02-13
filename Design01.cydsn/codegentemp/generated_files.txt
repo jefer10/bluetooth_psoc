@@ -54,6 +54,13 @@
   <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\foto_transistor_aliases.h" value="HEADER;;;;;foto_transistor" />
   <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\foto_transistor.c" value="SOURCE_C;CortexM3;;;;foto_transistor" />
   <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\foto_transistor.h" value="HEADER;;;;;foto_transistor" />
+  <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\ADC2.c" value="SOURCE_C;CortexM3;;;;ADC2" />
+  <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\ADC2.h" value="HEADER;;;;;ADC2" />
+  <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\ADC2_INT.c" value="SOURCE_C;CortexM3;;;;ADC2" />
+  <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\ADC2_PM.c" value="SOURCE_C;CortexM3;;;;ADC2" />
+  <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\Pin_ADC2_aliases.h" value="HEADER;;;;;Pin_ADC2" />
+  <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\Pin_ADC2.c" value="SOURCE_C;CortexM3;;;;Pin_ADC2" />
+  <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\Pin_ADC2.h" value="HEADER;;;;;Pin_ADC2" />
   <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\UART_IntClock.c" value="SOURCE_C;CortexM3;;;;UART_IntClock" />
   <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\UART_IntClock.h" value="HEADER;;;;;UART_IntClock" />
   <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\LCD_LCDPort_aliases.h" value="HEADER;;;;;LCD_LCDPort" />
@@ -82,6 +89,10 @@
   <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\ADC_IRQ.h" value="HEADER;;;;;ADC_IRQ" />
   <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\ADC_theACLK.c" value="SOURCE_C;CortexM3;;;;ADC_theACLK" />
   <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\ADC_theACLK.h" value="HEADER;;;;;ADC_theACLK" />
+  <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\ADC2_IRQ.c" value="SOURCE_C;CortexM3;;;;ADC2_IRQ" />
+  <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\ADC2_IRQ.h" value="HEADER;;;;;ADC2_IRQ" />
+  <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\ADC2_theACLK.c" value="SOURCE_C;CortexM3;;;;ADC2_theACLK" />
+  <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\ADC2_theACLK.h" value="HEADER;;;;;ADC2_theACLK" />
   <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\cm3gcc.ld" value="LINKER_SCRIPT;;;b98f980c-3bd1-4fc7-a887-c56a20a46fdd;;cy_boot" />
   <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\Cm3RealView.scat" value="LINKER_SCRIPT;;;fdb8e1ae-f83a-46cf-9446-1d703716f38a;;cy_boot" />
   <file name="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\codegentemp\Cm3Start.c" value="SOURCE_C;CortexM3;;;;cy_boot" />
