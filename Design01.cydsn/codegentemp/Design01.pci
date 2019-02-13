@@ -1,5 +1,5 @@
 # Design01
-# 2019-02-09 21:30:17Z
+# 2019-02-13 04:09:38Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -20,5 +20,6 @@ set_io "\emFile:mosi0(0)\" iocell 1 6
 set_io "\emFile:miso0(0)\" iocell 1 7
 set_io "\emFile:sclk0(0)\" iocell 1 5
 set_io "\emFile:SPI0_CS(0)\" iocell 1 4
-set_io "Pin_ADC(0)" iocell 0 7
+set_io "Pin_ADC(0)" iocell 0 1
+set_io "foto_transistor(0)" iocell 0 0
 set_location "\ADC:ADC_SAR\" sarcell -1 -1 0

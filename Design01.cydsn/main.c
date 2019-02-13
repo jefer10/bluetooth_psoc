@@ -31,6 +31,10 @@ volatile int8 conteo=0;
 char muestra[4];
 volatile bool bandera=false;
 volatile char  auxiliar;
+volatile uint32 contador;
+volatile uint32 rpm;
+volatile uint32 frecuencia;
+
 
 
 void WriteSD(){
@@ -60,7 +64,12 @@ void ReadSD(){
             }
     }
 }
-
+CY_ISR(frecu){
+    conteo=Counter_ReadCounter();
+    frecuencia=conteo;
+    rpm=60*frecuencia;
+    Counter_WriteCounter(0);     
+}
 
 CY_ISR(InterrupRx){
     dato_bluetooht=UART_GetChar();//recibe el dato del bluetooth
@@ -119,11 +128,15 @@ int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
     isrRX_StartEx(InterrupRx);
+     isr_1_StartEx(frecu);
     //////////////////////////////////////////////////////////////
     UART_Start();
     LCD_Start();
     FS_Init();// Inicia Sistema de archivos
     ADC_Start();
+    PWM_Start();
+    Counter_Start();
+    /////////////////////////////////////////////////////////////////////
     LCD_Position(0,0);
     LCD_PrintString("t total");
     LCD_Position(1,0);

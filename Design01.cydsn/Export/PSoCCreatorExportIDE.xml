@@ -140,6 +140,21 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_ADC_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_ADC.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_ADC.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Counter.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Counter.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Counter_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\foto_transistor_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\foto_transistor.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\foto_transistor.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\Export\ARM_GCC_Generic">
