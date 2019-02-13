@@ -91,7 +91,7 @@ set_location "\PWM:PWMUDB:genblk1:ctrlreg\" controlcell 2 5 6
 set_location "\ADC:IRQ\" interrupt -1 -1 0
 set_location "isr_1" interrupt -1 -1 2
 set_io "\emFile:mosi0(0)\" iocell 1 6
-set_location "\ADC:ADC_SAR\" sarcell -1 -1 0
+set_location "\ADC:ADC_SAR\" sarcell -1 -1 1
 set_io "foto_transistor(0)" iocell 0 0
 set_io "Tx_1(0)" iocell 3 1
 set_io "\emFile:miso0(0)\" iocell 1 7
@@ -99,7 +99,7 @@ set_location "isrRX" interrupt -1 -1 1
 # Note: port 12 is the logical name for port 7
 set_io "\LCD:LCDPort(0)\" iocell 12 0
 set_io "\emFile:SPI0_CS(0)\" iocell 1 4
-set_io "Pin_ADC(0)" iocell 0 1
+set_io "Pin_ADC(0)" iocell 3 2
 set_io "\emFile:sclk0(0)\" iocell 1 5
 # Note: port 12 is the logical name for port 7
 set_io "\LCD:LCDPort(2)\" iocell 12 2
