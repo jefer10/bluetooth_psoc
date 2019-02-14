@@ -21,7 +21,7 @@ const char ctime[]= "t\r\n";//
 
 //Variables de manejo de archivos
 FS_FILE *pFile;
-volatile char file[15]="DATOS0.txt";
+char file[15]="DATOS0.txt";
 char acBuffer[200];
 //Varibles de interupcion
 volatile char dato_bluetooht='0';
@@ -31,6 +31,7 @@ char muestra[6];
 //Variables usadas en el main
 char temperatura[16];
 char voltaje[16];
+char velocidad[16];
 volatile int16 conteo_total=0 ,numero_de_muestra=6;
 volatile int16 tiempo_muestreo=1, tiempo_total=1;
 
@@ -38,8 +39,8 @@ volatile bool bandera=false;
 
 volatile char  auxiliar;
 volatile uint32 contador;
-volatile uint32 rpm;
-volatile uint32 frecuencia;
+volatile uint16 rpm;
+volatile uint16 frecuencia;
 
 
 void IniciarArchivos(){
@@ -117,6 +118,8 @@ CY_ISR(frecu){
     conteo=Counter_ReadCounter();
     frecuencia=conteo;
     rpm=60*frecuencia;
+    LCD_Position(0,11);
+    LCD_PrintNumber(rpm);
     Counter_WriteCounter(0);     
 }
 
@@ -175,6 +178,12 @@ CY_ISR(InterrupRx){
             LCD_ClearDisplay();
             LCD_PrintString("Inicio Voltaje");            
             WriteHead(0x01);//Crea cabecera de temperatura
+            break;
+        }
+        case 'v':{
+            LCD_ClearDisplay();
+            LCD_PrintString("Inicio Velocidad");            
+            WriteHead(0x02);//Crea cabecera de temperatura
             break;
         }
         case 'f':
@@ -257,12 +266,15 @@ int main(void)
 {
        CyGlobalIntEnable; /* Enable global interrupts. */
     isrRX_StartEx(InterrupRx);
+    isr_1_StartEx(frecu);
     //////////////////////////////////////////////////////////////
     UART_Start();
     LCD_Start();
     FS_Init();// Inicia Sistema de archivos
     ADC_Start();
     ADC2_Start();
+    PWM_Start();
+    Counter_Start();
     IniciarArchivos();
     
     LCD_Position(0,0);
@@ -270,8 +282,10 @@ int main(void)
     LCD_Position(1,0);
     LCD_PrintString("t muestra 10seg");
     //////////////////////////////////////////////////////////////////////////////////////
-                        /////construccion del panel en la app
-    UART_PutString("*.kwl");
+
+///////////// Build panel in app
+
+UART_PutString("*.kwl");
     UART_PutString("\r");
     UART_PutString("clear_panel()");
     UART_PutString("\r");
@@ -291,7 +305,7 @@ int main(void)
     UART_PutString("\r");
     UART_PutString("add_button(14,6,15,s,)");
     UART_PutString("\r");
-    UART_PutString("add_button(2,6,16,v,)");
+    UART_PutString("add_button(2,6,17,v,)");
     UART_PutString("\r");
     UART_PutString("add_roll_graph(12,7,5,0,5000,100,V,voltaje,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,97,222)");
     UART_PutString("\r");
@@ -305,12 +319,16 @@ int main(void)
     UART_PutString("\r");
     UART_PutString("add_send_box(2,2,3,,m,f)");
     UART_PutString("\r");
-    UART_PutString("set_panel_notes(,,,)");
-    UART_PutString("\r");
+    //UART_PutString("set_panel_notes(,,,)");
+    //UART_PutString("\r");
     UART_PutString("run()");
     UART_PutString("\r");
     UART_PutString("*");
     UART_PutString("\r");
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         /////////variables del programa de paneles
     int16 temp; // Roll Graph trace value
@@ -353,6 +371,25 @@ int main(void)
                 pFile=FS_FOpen(file, "a");
                 if (pFile != 0) {
                     FS_Write(pFile, voltaje, strlen(voltaje));// Escribe la cabecera cotrespondiente a Temp
+                }else{
+                    LCD_PrintString("Error");
+                }
+                FS_FClose(pFile);
+                conteo_total++; 
+        }else{
+            Termino();
+        }
+        }
+        if(dato_bluetooht=='v')
+        {
+            if(numero_de_muestra!=conteo_total){
+                CyDelay(tiempo_muestreo*995);
+                sprintf(velocidad,"*S%d,%d*",rpm,conteo_total);
+                UART_PutString(velocidad);
+                sprintf(velocidad,"%d,%d\r\n",rpm,conteo_total);
+                pFile=FS_FOpen(file, "a");
+                if (pFile != 0) {
+                    FS_Write(pFile, voltaje, strlen(velocidad));// Escribe la cabecera cotrespondiente a Temp
                 }else{
                     LCD_PrintString("Error");
                 }

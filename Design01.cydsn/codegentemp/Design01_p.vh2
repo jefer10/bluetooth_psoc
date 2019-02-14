@@ -1,5 +1,5 @@
 -- Project:   Design01
--- Generated: 02/13/2019 18:24:09
+-- Generated: 02/14/2019 11:57:12
 -- PSoC Creator  4.2
 
 ENTITY Design01 IS
@@ -1649,10 +1649,10 @@ BEGIN
 
     foto_transistor:logicalport
         GENERIC MAP(
-            drive_mode => "001",
+            drive_mode => "010",
             ibuf_enabled => "1",
             id => "8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
-            init_dr_st => "0",
+            init_dr_st => "1",
             input_buffer_sel => "00",
             input_clk_en => 0,
             input_sync => "0",
@@ -2748,7 +2748,7 @@ BEGIN
 
     isr_1:interrupt
         GENERIC MAP(
-            int_type => "10",
+            int_type => "00",
             is_nmi => 0)
         PORT MAP(
             interrupt => Net_131,

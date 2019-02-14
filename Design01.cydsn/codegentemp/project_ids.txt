@@ -1,6 +1,6 @@
-C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\Design01.cyprj|74cd0f05-f8f3-4501-81ef-2f82508688d6
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|54ce6129-7040-412c-ba07-090b1551a083
-C:\Users\jefer\OneDrive\Documentos\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|b2bdbaf9-e92a-4558-8a02-302a5ab2a2a1
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|101c0004-7911-425e-809f-a8d9621d7039
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|657082f0-2db2-4664-b316-67725df5c28a
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|a2e1dc9e-36c9-41c7-a546-b6a21ed6a77e
+C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\Design01.cyprj|acf9f41c-e46c-4a9a-b8d5-71b7b3397147
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|02c71ea3-6c7c-4dfe-a3e2-b503a61ee215
+C:\Users\jefer\OneDrive\Documentos\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|0c677c45-59f5-4ddd-a2e4-df1ad91933ba
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|fd788189-8663-4a7d-b317-7193235b7ac2
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|8714484f-f507-4502-a6a9-469a3bf3686a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|f6234787-6d4a-4fdc-aa3d-8fea57b973ba
