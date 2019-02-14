@@ -38,9 +38,8 @@ volatile int16 tiempo_muestreo=1, tiempo_total=1;
 volatile bool bandera=false;
 
 volatile char  auxiliar;
-volatile uint32 contador;
-volatile uint16 rpm;
-volatile uint16 frecuencia;
+volatile uint16 cuenta=0;
+volatile uint16 frecuencia=0;
 
 
 void IniciarArchivos(){
@@ -114,13 +113,14 @@ void Termino(){
 }
 
 
-CY_ISR(frecu){
-    conteo=Counter_ReadCounter();
-    frecuencia=conteo;
-    rpm=60*frecuencia;
-    LCD_Position(0,11);
-    LCD_PrintNumber(rpm);
-    Counter_WriteCounter(0);     
+CY_ISR(ISR_SW){
+    cuenta++;
+    Col_ClearInterrupt(); 
+}
+
+CY_ISR(velo){
+    frecuencia=60*cuenta;
+    cuenta=0;
 }
 
 void SendFile(){
@@ -182,7 +182,9 @@ CY_ISR(InterrupRx){
         }
         case 'v':{
             LCD_ClearDisplay();
-            LCD_PrintString("Inicio Velocidad");            
+            LCD_PrintString("Inicio Velocidad");
+            isr_pin_Start();
+            isr_timer_Start();
             WriteHead(0x02);//Crea cabecera de temperatura
             break;
         }
@@ -266,15 +268,15 @@ int main(void)
 {
        CyGlobalIntEnable; /* Enable global interrupts. */
     isrRX_StartEx(InterrupRx);
-    isr_1_StartEx(frecu);
+    isr_pin_StartEx(ISR_SW);
+    isr_timer_StartEx(velo);
     //////////////////////////////////////////////////////////////
     UART_Start();
     LCD_Start();
     FS_Init();// Inicia Sistema de archivos
     ADC_Start();
     ADC2_Start();
-    PWM_Start();
-    Counter_Start();
+    Timer_Start();
     IniciarArchivos();
     
     LCD_Position(0,0);
@@ -384,12 +386,12 @@ UART_PutString("*.kwl");
         {
             if(numero_de_muestra!=conteo_total){
                 CyDelay(tiempo_muestreo*995);
-                sprintf(velocidad,"*S%d,%d*",rpm,conteo_total);
+                sprintf(velocidad,"*S%d,%d*",frecuencia,conteo_total);
                 UART_PutString(velocidad);
-                sprintf(velocidad,"%d,%d\r\n",rpm,conteo_total);
+                sprintf(velocidad,"%d,%d\r\n",frecuencia,conteo_total);
                 pFile=FS_FOpen(file, "a");
                 if (pFile != 0) {
-                    FS_Write(pFile, voltaje, strlen(velocidad));// Escribe la cabecera cotrespondiente a Temp
+                    FS_Write(pFile, velocidad, strlen(velocidad));// Escribe la cabecera cotrespondiente a Temp
                 }else{
                     LCD_PrintString("Error");
                 }
@@ -397,6 +399,9 @@ UART_PutString("*.kwl");
                 conteo_total++; 
         }else{
             Termino();
+
+            //isr_pin_Stop();
+            //Timer_Stop();
         }
         
         }

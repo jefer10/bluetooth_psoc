@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: foto_transistor.h  
+* File Name: Col.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_foto_transistor_ALIASES_H) /* Pins foto_transistor_ALIASES_H */
-#define CY_PINS_foto_transistor_ALIASES_H
+#if !defined(CY_PINS_Col_ALIASES_H) /* Pins Col_ALIASES_H */
+#define CY_PINS_Col_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,12 +25,12 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define foto_transistor_0			(foto_transistor__0__PC)
-#define foto_transistor_0_INTR	((uint16)((uint16)0x0001u << foto_transistor__0__SHIFT))
+#define Col_0			(Col__0__PC)
+#define Col_0_INTR	((uint16)((uint16)0x0001u << Col__0__SHIFT))
 
-#define foto_transistor_INTR_ALL	 ((uint16)(foto_transistor_0_INTR))
+#define Col_INTR_ALL	 ((uint16)(Col_0_INTR))
 
-#endif /* End Pins foto_transistor_ALIASES_H */
+#endif /* End Pins Col_ALIASES_H */
 
 
 /* [] END OF FILE */

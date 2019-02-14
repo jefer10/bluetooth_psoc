@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: foto_transistor.c  
+* File Name: Col.c  
 * Version 2.20
 *
 * Description:
@@ -15,15 +15,15 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "foto_transistor.h"
+#include "Col.h"
 
 /* APIs are not generated for P15[7:6] on PSoC 5 */
 #if !(CY_PSOC5A &&\
-	 foto_transistor__PORT == 15 && ((foto_transistor__MASK & 0xC0) != 0))
+	 Col__PORT == 15 && ((Col__MASK & 0xC0) != 0))
 
 
 /*******************************************************************************
-* Function Name: foto_transistor_Write
+* Function Name: Col_Write
 ****************************************************************************//**
 *
 * \brief Writes the value to the physical port (data output register), masking
@@ -52,17 +52,17 @@
 *  this function.
 *
 * \funcusage
-*  \snippet foto_transistor_SUT.c usage_foto_transistor_Write
+*  \snippet Col_SUT.c usage_Col_Write
 *******************************************************************************/
-void foto_transistor_Write(uint8 value)
+void Col_Write(uint8 value)
 {
-    uint8 staticBits = (foto_transistor_DR & (uint8)(~foto_transistor_MASK));
-    foto_transistor_DR = staticBits | ((uint8)(value << foto_transistor_SHIFT) & foto_transistor_MASK);
+    uint8 staticBits = (Col_DR & (uint8)(~Col_MASK));
+    Col_DR = staticBits | ((uint8)(value << Col_SHIFT) & Col_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: foto_transistor_SetDriveMode
+* Function Name: Col_SetDriveMode
 ****************************************************************************//**
 *
 * \brief Sets the drive mode for each of the Pins component's pins.
@@ -85,16 +85,16 @@ void foto_transistor_Write(uint8 value)
 *  APIs (primary method) or disable interrupts around this function.
 *
 * \funcusage
-*  \snippet foto_transistor_SUT.c usage_foto_transistor_SetDriveMode
+*  \snippet Col_SUT.c usage_Col_SetDriveMode
 *******************************************************************************/
-void foto_transistor_SetDriveMode(uint8 mode)
+void Col_SetDriveMode(uint8 mode)
 {
-	CyPins_SetPinDriveMode(foto_transistor_0, mode);
+	CyPins_SetPinDriveMode(Col_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: foto_transistor_Read
+* Function Name: Col_Read
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port (pin status register) and masks 
@@ -108,16 +108,16 @@ void foto_transistor_SetDriveMode(uint8 mode)
 *  The current value for the pins in the component as a right justified number.
 *
 * \funcusage
-*  \snippet foto_transistor_SUT.c usage_foto_transistor_Read  
+*  \snippet Col_SUT.c usage_Col_Read  
 *******************************************************************************/
-uint8 foto_transistor_Read(void)
+uint8 Col_Read(void)
 {
-    return (foto_transistor_PS & foto_transistor_MASK) >> foto_transistor_SHIFT;
+    return (Col_PS & Col_MASK) >> Col_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: foto_transistor_ReadDataReg
+* Function Name: Col_ReadDataReg
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port's data output register and masks 
@@ -126,8 +126,8 @@ uint8 foto_transistor_Read(void)
 *
 * The data output register controls the signal applied to the physical pin in 
 * conjunction with the drive mode parameter. This is not the same as the 
-* preferred foto_transistor_Read() API because the 
-* foto_transistor_ReadDataReg() reads the data register instead of the status 
+* preferred Col_Read() API because the 
+* Col_ReadDataReg() reads the data register instead of the status 
 * register. For output pins this is a useful function to determine the value 
 * just written to the pin.
 *
@@ -136,19 +136,19 @@ uint8 foto_transistor_Read(void)
 *  justified number for the component instance.
 *
 * \funcusage
-*  \snippet foto_transistor_SUT.c usage_foto_transistor_ReadDataReg 
+*  \snippet Col_SUT.c usage_Col_ReadDataReg 
 *******************************************************************************/
-uint8 foto_transistor_ReadDataReg(void)
+uint8 Col_ReadDataReg(void)
 {
-    return (foto_transistor_DR & foto_transistor_MASK) >> foto_transistor_SHIFT;
+    return (Col_DR & Col_MASK) >> Col_SHIFT;
 }
 
 
 /* If interrupt is connected for this Pins component */ 
-#if defined(foto_transistor_INTSTAT) 
+#if defined(Col_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: foto_transistor_SetInterruptMode
+    * Function Name: Col_SetInterruptMode
     ****************************************************************************//**
     *
     * \brief Configures the interrupt mode for each of the Pins component's
@@ -161,12 +161,12 @@ uint8 foto_transistor_ReadDataReg(void)
     * \param position
     *  The pin position as listed in the Pins component. You may OR these to be 
     *  able to configure the interrupt mode of multiple pins within a Pins 
-    *  component. Or you may use foto_transistor_INTR_ALL to configure the
+    *  component. Or you may use Col_INTR_ALL to configure the
     *  interrupt mode of all the pins in the Pins component.       
-    *  - foto_transistor_0_INTR       (First pin in the list)
-    *  - foto_transistor_1_INTR       (Second pin in the list)
+    *  - Col_0_INTR       (First pin in the list)
+    *  - Col_1_INTR       (Second pin in the list)
     *  - ...
-    *  - foto_transistor_INTR_ALL     (All pins in Pins component)
+    *  - Col_INTR_ALL     (All pins in Pins component)
     *
     * \param mode
     *  Interrupt mode for the selected pins. Valid options are documented in
@@ -182,19 +182,19 @@ uint8 foto_transistor_ReadDataReg(void)
     *  port.
     *
     * \funcusage
-    *  \snippet foto_transistor_SUT.c usage_foto_transistor_SetInterruptMode
+    *  \snippet Col_SUT.c usage_Col_SetInterruptMode
     *******************************************************************************/
-    void foto_transistor_SetInterruptMode(uint16 position, uint16 mode)
+    void Col_SetInterruptMode(uint16 position, uint16 mode)
     {
-		if((position & foto_transistor_0_INTR) != 0u) 
+		if((position & Col_0_INTR) != 0u) 
 		{ 
-			 foto_transistor_0_INTTYPE_REG = (uint8)mode; 
+			 Col_0_INTTYPE_REG = (uint8)mode; 
 		}
     }
     
     
     /*******************************************************************************
-    * Function Name: foto_transistor_ClearInterrupt
+    * Function Name: Col_ClearInterrupt
     ****************************************************************************//**
     *
     * \brief Clears any active interrupts attached with the component and returns 
@@ -211,11 +211,11 @@ uint8 foto_transistor_ReadDataReg(void)
     *  those associated with the Pins component.
     *
     * \funcusage
-    *  \snippet foto_transistor_SUT.c usage_foto_transistor_ClearInterrupt
+    *  \snippet Col_SUT.c usage_Col_ClearInterrupt
     *******************************************************************************/
-    uint8 foto_transistor_ClearInterrupt(void)
+    uint8 Col_ClearInterrupt(void)
     {
-        return (foto_transistor_INTSTAT & foto_transistor_MASK) >> foto_transistor_SHIFT;
+        return (Col_INTSTAT & Col_MASK) >> Col_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 
