@@ -42,15 +42,21 @@ volatile uint32 rpm;
 volatile uint32 frecuencia;
 
 
-
-void WriteHead(char sourse){
+void IniciarArchivos(){
     char i=0;
     while(pFile!=0){
         sprintf(file,"DATOS%d.txt",i);
         pFile = FS_FOpen(file,"r");//Intenta abrir el archivo, si puede permanece en el while
         i++;
     }
-    pFile = FS_FOpen(file,"a");// Crea el nuevo archivo
+        pFile = FS_FOpen(file,"a");// Crea el nuevo archivo
+
+}
+
+
+void WriteHead(char sourse){
+    IniciarArchivos();
+
 
     if (pFile != 0) {
         if(sourse==0x00){
@@ -85,6 +91,14 @@ void ReadSD(){
 void Termino(){
 
         LCD_ClearDisplay();
+        pFile=FS_FOpen(file, "a");
+        
+        if (pFile != 0) {
+                    FS_Write(pFile,"*", strlen("*"));// Escribe la cabecera cotrespondiente a Temp
+                }else{
+                    LCD_PrintString("Error");
+        }
+        
         LCD_PrintString("Termino guardado");
         LCD_Position(1,0);
         LCD_PrintString("en : ");
@@ -125,10 +139,20 @@ void SendFile(){
         }      
     i++;
     }
-    i=1;
-    while(sizeof(acBuffer)>i){
-            sprintf(temperatura,"*%c%d,%d*",aux,acBuffer[4*i],acBuffer[4*i+1]);
-            UART_PutString(temperatura);
+    i=3;
+    while(acBuffer[i+1]!='*'){
+        if(acBuffer[i]=='\n'){
+        sprintf(temperatura,"*%c",aux);
+        UART_PutString(temperatura);
+        
+        }else if(acBuffer[i]=='\r'){
+        UART_PutString("*");
+        }else{
+        sprintf(temperatura,"%c",acBuffer[i]);
+        UART_PutString(temperatura);
+        }
+        i++;
+            
     }
 
 }
@@ -191,7 +215,30 @@ CY_ISR(InterrupRx){
         
         
         case 'd':{
+            LCD_ClearDisplay();
+            LCD_PrintString("Borro");
+            LCD_Position(1,0);
+            char j=0;
+            while(file[j]!='.'){
+            LCD_PutChar(file[j]);
+            j++;
+            }
             FS_Remove (file);//Borra el ultimo archivo
+            break;
+        }
+        
+        case 'e':{
+            LCD_ClearDisplay();
+            LCD_PrintString("Leyendo");
+            LCD_Position(1,0);
+            char j=0;
+            while(file[j]!='.'){
+            LCD_PutChar(file[j]);
+            j++;
+            }
+            ReadSD();
+            SendFile();
+            break;
         }
         
         default:
@@ -216,6 +263,8 @@ int main(void)
     FS_Init();// Inicia Sistema de archivos
     ADC_Start();
     ADC2_Start();
+    IniciarArchivos();
+    
     LCD_Position(0,0);
     LCD_PrintString("t total    1min");
     LCD_Position(1,0);
@@ -240,19 +289,19 @@ int main(void)
     UART_PutString("\r");
     UART_PutString("add_button(16,2,22,2,5)");
     UART_PutString("\r");
-    UART_PutString("add_button(16,3,23,3,6)");
+    UART_PutString("add_button(16,3,23,e,)");
     UART_PutString("\r");
-    UART_PutString("add_button(16,4,7,v,)");
+    UART_PutString("add_button(16,4,7,d,)");//Borra ultimo archivo
     UART_PutString("\r");
     UART_PutString("add_button(8,6,14,t,)");
     UART_PutString("\r");
     UART_PutString("add_button(14,6,15,s,)");
     UART_PutString("\r");
-    UART_PutString("add_button(2,6,16,G,)");
+    UART_PutString("add_button(2,6,16,v,)");
     UART_PutString("\r");
     UART_PutString("add_button(2,3,17,B,)");
     UART_PutString("\r");
-    UART_PutString("add_roll_graph(12,7,5,-1.0,5.0,100,V,voltaje,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,97,222)");
+    UART_PutString("add_roll_graph(12,7,5,0,5000,100,V,voltaje,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,97,222)");
     UART_PutString("\r");
     UART_PutString("add_roll_graph(6,7,5,10.0,40.0,100,T,temperatura,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,255,0)");
     UART_PutString("\r");
@@ -272,11 +321,8 @@ int main(void)
     UART_PutString("\r");
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         /////////variables del programa de paneles
-    //tiempo_muestreo=500; // time interval in ms for updating panel indicators 
     int16 temp; // Roll Graph trace value
-     
-
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+    
 
     for(;;)
     {
@@ -290,7 +336,7 @@ int main(void)
                 sprintf(temperatura,"*T%d,%d*",temp,conteo_total);
                 UART_PutString(temperatura);
                 sprintf(temperatura,"%d,%d\r\n",temp,conteo_total);
-                FS_FOpen(file, "a");
+                pFile=FS_FOpen(file, "a");
                 if (pFile != 0) {
                     FS_Write(pFile, temperatura, strlen(temperatura));// Escribe la cabecera cotrespondiente a Temp
                 }else{
@@ -299,17 +345,7 @@ int main(void)
                 FS_FClose(pFile);
                 conteo_total++; 
             }else{
-                    LCD_ClearDisplay();
-                    LCD_PrintString("Termino guardado");
-                    LCD_Position(1,0);
-                    LCD_PrintString("en : ");
-                    char j=0;
-                    while(file[j]!='.'){
-                    LCD_PutChar(file[j]);
-                    j++;
-                    }
-                    conteo_total=0;
-                    dato_bluetooht='1';
+                    Termino();
             }  
         }
         if(dato_bluetooht=='s')
@@ -322,9 +358,7 @@ int main(void)
                 sprintf(voltaje,"*V%d,%d*",temp,conteo_total);
                 UART_PutString(voltaje);
                 sprintf(voltaje,"%d,%d\r\n",temp,conteo_total);
-                LCD_Position(0,0);
-                LCD_PrintNumber(temp);
-                FS_FOpen(file, "a");
+                pFile=FS_FOpen(file, "a");
                 if (pFile != 0) {
                     FS_Write(pFile, voltaje, strlen(voltaje));// Escribe la cabecera cotrespondiente a Temp
                 }else{
@@ -333,17 +367,7 @@ int main(void)
                 FS_FClose(pFile);
                 conteo_total++; 
         }else{
-            LCD_ClearDisplay();
-                    LCD_PrintString("Termino guardado");
-                    LCD_Position(1,0);
-                    LCD_PrintString("en : ");
-                    char j=0;
-                    while(file[j]!='.'){
-                    LCD_PutChar(file[j]);
-                    j++;
-                    }
-                    conteo_total=0;
-                    dato_bluetooht='1';
+            Termino();
         }
         
         }

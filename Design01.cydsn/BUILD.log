@@ -1,5 +1,97 @@
---------------- Build Started: 02/13/2019 18:40:08 Project: Design01, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 02/13/2019 19:48:31 Project: Design01, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
-The compile step is up to date, no work needs to be done.
-The link step is up to date, no work needs to be done.
---------------- Build Succeeded: 02/13/2019 18:40:08 ---------------
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\emFile_V322c\Code\Include\PSoC5\emf32nOS -I..\emFile_V322c\Code\Include\PSoC5 -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
+main.c: In function 'IniciarArchivos':
+main.c:48:17: warning: passing argument 1 of 'sprintf' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+         sprintf(file,"DATOS%d.txt",i);
+                 ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC5/CyLib.h:22,
+                 from Generated_Source\PSoC5/UART.h:24,
+                 from Generated_Source\PSoC5/project.h:22,
+                 from main.c:11:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\stdio.h:231:5: note: expected 'char * restrict' but argument is of type 'volatile char *'
+ int _EXFUN(sprintf, (char *__restrict, const char *__restrict, ...)
+     ^
+main.c:49:26: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+         pFile = FS_FOpen(file,"r");//Intenta abrir el archivo, si puede permanece en el while
+                          ^
+In file included from main.c:13:0:
+..\emFile_V322c\Code\Include\PSoC5/FS.h:314:18: note: expected 'const char *' but argument is of type 'volatile char *'
+ FS_FILE *        FS_FOpen (const char * pFileName, const char * pMode);
+                  ^
+main.c:52:26: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+         pFile = FS_FOpen(file,"a");// Crea el nuevo archivo
+                          ^
+In file included from main.c:13:0:
+..\emFile_V322c\Code\Include\PSoC5/FS.h:314:18: note: expected 'const char *' but argument is of type 'volatile char *'
+ FS_FILE *        FS_FOpen (const char * pFileName, const char * pMode);
+                  ^
+main.c: In function 'ReadSD':
+main.c:81:22: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+     pFile = FS_FOpen(file,"r");
+                      ^
+In file included from main.c:13:0:
+..\emFile_V322c\Code\Include\PSoC5/FS.h:314:18: note: expected 'const char *' but argument is of type 'volatile char *'
+ FS_FILE *        FS_FOpen (const char * pFileName, const char * pMode);
+                  ^
+main.c: In function 'Termino':
+main.c:94:24: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+         pFile=FS_FOpen(file, "a");
+                        ^
+In file included from main.c:13:0:
+..\emFile_V322c\Code\Include\PSoC5/FS.h:314:18: note: expected 'const char *' but argument is of type 'volatile char *'
+ FS_FILE *        FS_FOpen (const char * pFileName, const char * pMode);
+                  ^
+main.c:106:19: warning: array subscript has type 'char' [-Wchar-subscripts]
+         while(file[j]!='.'){
+                   ^
+main.c:107:25: warning: array subscript has type 'char' [-Wchar-subscripts]
+         LCD_PutChar(file[j]);
+                         ^
+main.c: In function 'InterrupRx':
+main.c:222:23: warning: array subscript has type 'char' [-Wchar-subscripts]
+             while(file[j]!='.'){
+                       ^
+main.c:223:29: warning: array subscript has type 'char' [-Wchar-subscripts]
+             LCD_PutChar(file[j]);
+                             ^
+main.c:226:24: warning: passing argument 1 of 'FS_Remove' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+             FS_Remove (file);//Borra el ultimo archivo
+                        ^
+In file included from main.c:13:0:
+..\emFile_V322c\Code\Include\PSoC5/FS.h:353:18: note: expected 'const char *' but argument is of type 'volatile char *'
+ int              FS_Remove     (const char * pFileName);
+                  ^
+main.c:235:23: warning: array subscript has type 'char' [-Wchar-subscripts]
+             while(file[j]!='.'){
+                       ^
+main.c:236:29: warning: array subscript has type 'char' [-Wchar-subscripts]
+             LCD_PutChar(file[j]);
+                             ^
+main.c: In function 'main':
+main.c:339:32: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+                 pFile=FS_FOpen(file, "a");
+                                ^
+In file included from main.c:13:0:
+..\emFile_V322c\Code\Include\PSoC5/FS.h:314:18: note: expected 'const char *' but argument is of type 'volatile char *'
+ FS_FILE *        FS_FOpen (const char * pFileName, const char * pMode);
+                  ^
+main.c:361:32: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+                 pFile=FS_FOpen(file, "a");
+                                ^
+In file included from main.c:13:0:
+..\emFile_V322c\Code\Include\PSoC5/FS.h:314:18: note: expected 'const char *' but argument is of type 'volatile char *'
+ FS_FILE *        FS_FOpen (const char * pFileName, const char * pMode);
+                  ^
+arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_541\Debug\Design01.a .\CortexM3\ARM_GCC_541\Debug\UART.o .\CortexM3\ARM_GCC_541\Debug\UART_PM.o .\CortexM3\ARM_GCC_541\Debug\UART_INT.o .\CortexM3\ARM_GCC_541\Debug\UART_BOOT.o .\CortexM3\ARM_GCC_541\Debug\LCD.o .\CortexM3\ARM_GCC_541\Debug\LCD_PM.o .\CortexM3\ARM_GCC_541\Debug\UART_IntClock.o .\CortexM3\ARM_GCC_541\Debug\LCD_LCDPort.o .\CortexM3\ARM_GCC_541\Debug\CyDmac.o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o .\CortexM3\ARM_GCC_541\Debug\CyLib.o .\CortexM3\ARM_GCC_541\Debug\cyPm.o .\CortexM3\ARM_GCC_541\Debug\CySpc.o .\CortexM3\ARM_GCC_541\Debug\cyutils.o .\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM3\ARM_GCC_541\Debug\isrRX.o .\CortexM3\ARM_GCC_541\Debug\emFile_ConfigMMC_SPI.o .\CortexM3\ARM_GCC_541\Debug\emFile_MMC_HW_SPI.o .\CortexM3\ARM_GCC_541\Debug\emFile_PM.o .\CortexM3\ARM_GCC_541\Debug\emFile_SPI0.o .\CortexM3\ARM_GCC_541\Debug\emFile_SPI0_PM.o .\CortexM3\ARM_GCC_541\Debug\emFile_SPI0_INT.o .\CortexM3\ARM_GCC_541\Debug\emFile_mosi0.o .\CortexM3\ARM_GCC_541\Debug\emFile_Clock_1.o .\CortexM3\ARM_GCC_541\Debug\emFile_miso0.o .\CortexM3\ARM_GCC_541\Debug\emFile_sclk0.o .\CortexM3\ARM_GCC_541\Debug\emFile_SPI0_CS.o .\CortexM3\ARM_GCC_541\Debug\ADC.o .\CortexM3\ARM_GCC_541\Debug\ADC_INT.o .\CortexM3\ARM_GCC_541\Debug\ADC_PM.o .\CortexM3\ARM_GCC_541\Debug\ADC_IRQ.o .\CortexM3\ARM_GCC_541\Debug\ADC_theACLK.o .\CortexM3\ARM_GCC_541\Debug\Pin_ADC.o .\CortexM3\ARM_GCC_541\Debug\Clock_1.o .\CortexM3\ARM_GCC_541\Debug\Clock_2.o .\CortexM3\ARM_GCC_541\Debug\isr_1.o .\CortexM3\ARM_GCC_541\Debug\PWM.o .\CortexM3\ARM_GCC_541\Debug\PWM_PM.o .\CortexM3\ARM_GCC_541\Debug\Counter.o .\CortexM3\ARM_GCC_541\Debug\Counter_PM.o .\CortexM3\ARM_GCC_541\Debug\foto_transistor.o .\CortexM3\ARM_GCC_541\Debug\ADC2.o .\CortexM3\ARM_GCC_541\Debug\ADC2_INT.o .\CortexM3\ARM_GCC_541\Debug\ADC2_PM.o .\CortexM3\ARM_GCC_541\Debug\Pin_ADC2.o .\CortexM3\ARM_GCC_541\Debug\ADC2_IRQ.o .\CortexM3\ARM_GCC_541\Debug\ADC2_theACLK.o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o
+arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_541\Debug\Design01.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\CortexM3\ARM_GCC_541\Debug\Design01.elf" .\CortexM3\ARM_GCC_541\Debug\main.o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o .\CortexM3\ARM_GCC_541\Debug\Design01.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -l emf32nosnlfn -L Generated_Source\PSoC5 -L ..\emFile_V322c\LinkLibrary\PSoC5\GCC -Wl,-Map,.\CortexM3\ARM_GCC_541\Debug/Design01.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
+cyelftool.exe -C "C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\CortexM3\ARM_GCC_541\Debug\Design01.elf" --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
+No ELF section .cychecksum found, creating one
+Application checksum calculated and stored in ELF section .cychecksum
+Checksum calculated and stored in ELF section .cymeta
+cyelftool.exe -S "C:\Users\jefer\OneDrive\Documentos\PSoC Creator\modulo_bluetooht\Design01.cydsn\CortexM3\ARM_GCC_541\Debug\Design01.elf"
+Flash used: 21136 of 262144 bytes (8,1 %).
+SRAM used: 7137 of 65536 bytes (10,9 %). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 02/13/2019 19:48:33 ---------------
