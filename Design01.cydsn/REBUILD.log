@@ -1,6 +1,6 @@
---------------- Rebuild Started: 02/13/2019 14:40:07 Project: main.c, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Rebuild Started: 02/13/2019 23:48:04 Project: main.c, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\emFile_V322c\Code\Include\PSoC5\emf32nOS -I..\emFile_V322c\Code\Include\PSoC5 -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
-main.c: In function 'WriteHead':
+main.c: In function 'IniciarArchivos':
 main.c:48:17: warning: passing argument 1 of 'sprintf' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
          sprintf(file,"DATOS%d.txt",i);
                  ^
@@ -19,41 +19,68 @@ In file included from main.c:13:0:
 ..\emFile_V322c\Code\Include\PSoC5/FS.h:314:18: note: expected 'const char *' but argument is of type 'volatile char *'
  FS_FILE *        FS_FOpen (const char * pFileName, const char * pMode);
                   ^
-main.c:52:22: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
-     pFile = FS_FOpen(file,"a");// Crea el nuevo archivo
-                      ^
+main.c:52:26: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+         pFile = FS_FOpen(file,"a");// Crea el nuevo archivo
+                          ^
 In file included from main.c:13:0:
 ..\emFile_V322c\Code\Include\PSoC5/FS.h:314:18: note: expected 'const char *' but argument is of type 'volatile char *'
  FS_FILE *        FS_FOpen (const char * pFileName, const char * pMode);
                   ^
 main.c: In function 'ReadSD':
-main.c:74:22: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+main.c:81:22: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
      pFile = FS_FOpen(file,"r");
                       ^
 In file included from main.c:13:0:
 ..\emFile_V322c\Code\Include\PSoC5/FS.h:314:18: note: expected 'const char *' but argument is of type 'volatile char *'
  FS_FILE *        FS_FOpen (const char * pFileName, const char * pMode);
                   ^
+main.c: In function 'Termino':
+main.c:94:24: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+         pFile=FS_FOpen(file, "a");
+                        ^
+In file included from main.c:13:0:
+..\emFile_V322c\Code\Include\PSoC5/FS.h:314:18: note: expected 'const char *' but argument is of type 'volatile char *'
+ FS_FILE *        FS_FOpen (const char * pFileName, const char * pMode);
+                  ^
+main.c:106:19: warning: array subscript has type 'char' [-Wchar-subscripts]
+         while(file[j]!='.'){
+                   ^
+main.c:107:25: warning: array subscript has type 'char' [-Wchar-subscripts]
+         LCD_PutChar(file[j]);
+                         ^
 main.c: In function 'InterrupRx':
-main.c:169:24: warning: passing argument 1 of 'FS_Remove' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+main.c:222:23: warning: array subscript has type 'char' [-Wchar-subscripts]
+             while(file[j]!='.'){
+                       ^
+main.c:223:29: warning: array subscript has type 'char' [-Wchar-subscripts]
+             LCD_PutChar(file[j]);
+                             ^
+main.c:226:24: warning: passing argument 1 of 'FS_Remove' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
              FS_Remove (file);//Borra el ultimo archivo
                         ^
 In file included from main.c:13:0:
 ..\emFile_V322c\Code\Include\PSoC5/FS.h:353:18: note: expected 'const char *' but argument is of type 'volatile char *'
  int              FS_Remove     (const char * pFileName);
                   ^
+main.c:235:23: warning: array subscript has type 'char' [-Wchar-subscripts]
+             while(file[j]!='.'){
+                       ^
+main.c:236:29: warning: array subscript has type 'char' [-Wchar-subscripts]
+             LCD_PutChar(file[j]);
+                             ^
 main.c: In function 'main':
-main.c:267:26: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
-                 FS_FOpen(file, "a");
-                          ^
+main.c:331:32: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+                 pFile=FS_FOpen(file, "a");
+                                ^
 In file included from main.c:13:0:
 ..\emFile_V322c\Code\Include\PSoC5/FS.h:314:18: note: expected 'const char *' but argument is of type 'volatile char *'
  FS_FILE *        FS_FOpen (const char * pFileName, const char * pMode);
                   ^
-main.c:281:31: warning: array subscript has type 'char' [-Wchar-subscripts]
-                     while(file[j]!='.'){
-                               ^
-main.c:282:37: warning: array subscript has type 'char' [-Wchar-subscripts]
-                     LCD_PutChar(file[j]);
-                                     ^
---------------- Rebuild Succeeded: 02/13/2019 14:40:15 ---------------
+main.c:353:32: warning: passing argument 1 of 'FS_FOpen' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+                 pFile=FS_FOpen(file, "a");
+                                ^
+In file included from main.c:13:0:
+..\emFile_V322c\Code\Include\PSoC5/FS.h:314:18: note: expected 'const char *' but argument is of type 'volatile char *'
+ FS_FILE *        FS_FOpen (const char * pFileName, const char * pMode);
+                  ^
+--------------- Rebuild Succeeded: 02/13/2019 23:48:08 ---------------

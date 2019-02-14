@@ -281,25 +281,17 @@ int main(void)
     UART_PutString("\r");
     UART_PutString("add_text(0,1,medium,L,tiempo,245,240,245,)");
     UART_PutString("\r");
-   // UART_PutString("add_text(0,3,medium,L,start,255,255,255,)");
-   // UART_PutString("\r");
     UART_PutString("add_text(8,0,xlarge,L,proyecto Bluetooth,0,255,0,)");
     UART_PutString("\r");
-    UART_PutString("add_button(16,1,21,1,4)");
+    UART_PutString("add_button(16,3,2,e,)");//Carga el archivo
     UART_PutString("\r");
-    UART_PutString("add_button(16,2,22,2,5)");
-    UART_PutString("\r");
-    UART_PutString("add_button(16,3,23,e,)");
-    UART_PutString("\r");
-    UART_PutString("add_button(16,4,7,d,)");//Borra ultimo archivo
+    UART_PutString("add_button(16,4,6,d,)");//Borra ultimo archivo
     UART_PutString("\r");
     UART_PutString("add_button(8,6,14,t,)");
     UART_PutString("\r");
     UART_PutString("add_button(14,6,15,s,)");
     UART_PutString("\r");
     UART_PutString("add_button(2,6,16,v,)");
-    UART_PutString("\r");
-    UART_PutString("add_button(2,3,17,B,)");
     UART_PutString("\r");
     UART_PutString("add_roll_graph(12,7,5,0,5000,100,V,voltaje,X-Axis,Y-Axis,0,0,1,0,0,1,medium,none,1,1,42,97,222)");
     UART_PutString("\r");
