@@ -1,5 +1,5 @@
 -- Project:   C:\Users\nikod\Documents\PSoC Creator\bluetooth_psoc\Design01.cydsn\Design01.cyprj
--- Generated: 02/15/2019 09:01:14
+-- Generated: 02/15/2019 12:40:32
 -- PSoC Creator  4.2
 
 ENTITY Design01 IS
@@ -728,14 +728,14 @@ BEGIN
             dsi_glb_div => open,
             dclk_glb_0 => \emFile:Net_19\,
             dclk_0 => \emFile:Net_19_local\,
-            aclk_glb_0 => \ADC2:Net_385\,
-            aclk_0 => \ADC2:Net_385_local\,
-            clk_a_dig_glb_0 => \ADC2:Net_381\,
-            clk_a_dig_0 => \ADC2:Net_381_local\,
-            aclk_glb_1 => \ADC:Net_385\,
-            aclk_1 => \ADC:Net_385_local\,
-            clk_a_dig_glb_1 => \ADC:Net_381\,
-            clk_a_dig_1 => \ADC:Net_381_local\,
+            aclk_glb_0 => \ADC:Net_385\,
+            aclk_0 => \ADC:Net_385_local\,
+            clk_a_dig_glb_0 => \ADC:Net_381\,
+            clk_a_dig_0 => \ADC:Net_381_local\,
+            aclk_glb_1 => \ADC2:Net_385\,
+            aclk_1 => \ADC2:Net_385_local\,
+            clk_a_dig_glb_1 => \ADC2:Net_381\,
+            clk_a_dig_1 => \ADC2:Net_381_local\,
             dclk_glb_1 => \UART:Net_9\,
             dclk_1 => \UART:Net_9_local\,
             aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\,
@@ -2200,8 +2200,8 @@ BEGIN
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
-            clock => \ClockBlock.aclk_glb_ff_1__sig\,
-            pump_clock => \ClockBlock.aclk_glb_ff_1__sig\,
+            clock => \ClockBlock.aclk_glb_ff_0__sig\,
+            pump_clock => \ClockBlock.aclk_glb_ff_0__sig\,
             sof_udb => open,
             vp_ctl_udb_3 => open,
             vp_ctl_udb_2 => open,
@@ -2247,8 +2247,8 @@ BEGIN
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
-            clock => \ClockBlock.aclk_glb_ff_0__sig\,
-            pump_clock => \ClockBlock.aclk_glb_ff_0__sig\,
+            clock => \ClockBlock.aclk_glb_ff_1__sig\,
+            pump_clock => \ClockBlock.aclk_glb_ff_1__sig\,
             sof_udb => open,
             vp_ctl_udb_3 => open,
             vp_ctl_udb_2 => open,

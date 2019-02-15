@@ -21,8 +21,8 @@ const char ctime[]= "t\r\n";//
 
 //Variables de manejo de archivos
 FS_FILE *pFile;
-char file[15]="DATOS0.txt";
-char acBuffer[200];
+volatile char file[15]="DATOS0.txt";
+volatile char acBuffer[5000];
 //Varibles de interupcion
 volatile char dato_bluetooht='0';
 volatile int8 conteo=0;
@@ -32,7 +32,7 @@ char muestra[6];
 char temperatura[16];
 char voltaje[16];
 char velocidad[16];
-volatile int16 conteo_total=0 ,numero_de_muestra=6;
+volatile int16 conteo_total=0 ,numero_de_muestra=60;
 volatile int16 tiempo_muestreo=1, tiempo_total=1;
 
 volatile bool bandera=false;
@@ -116,6 +116,10 @@ void Termino(){
 CY_ISR(ISR_SW){
     cuenta++;
     Col_ClearInterrupt();
+    /*
+    LCD_Position(1,cuenta);
+    LCD_PrintString("X");*/
+    
 }
 
 void SendFile(){
@@ -124,12 +128,19 @@ void SendFile(){
     while(acBuffer[i]!='\r'){
         switch(acBuffer[i]){
         case 'T':
+            LCD_Position(1,0);
+            LCD_PrintString("Temperatura");
             aux='T';
             break;
         case 'V':
+            LCD_Position(1,0);
+            LCD_PrintString("Voltaje");           
+            
             aux='V';
             break;
         case 'S':
+            LCD_Position(1,0);
+            LCD_PrintString("Frecuencia");
             aux='S';
             break;
         default:
@@ -142,7 +153,6 @@ void SendFile(){
         if(acBuffer[i]=='\n'){
         sprintf(temperatura,"*%c",aux);
         UART_PutString(temperatura);
-        
         }else if(acBuffer[i]=='\r'){
         UART_PutString("*");
         }else{
@@ -189,13 +199,15 @@ CY_ISR(InterrupRx){
                 tiempo_muestreo=muestra[i]+10*tiempo_muestreo;        
                 i++;
             }
-            LCD_Position(1,11);
+            
+            LCD_Position(1,0);
+            LCD_PrintString("t muestra ");
             LCD_PrintNumber(tiempo_muestreo);
             conteo=0;
             conteo_total=0;
             numero_de_muestra=(60*tiempo_total)/tiempo_muestreo;//60 para manejarlo en minutos por
             bandera=false;
-            
+            UART_PutString("\r");
             break;
         }
         
@@ -207,13 +219,16 @@ CY_ISR(InterrupRx){
                 tiempo_total=muestra[i]+10*tiempo_total;        
                 i++;
             }
+            
+            LCD_Position(0,0);
+            LCD_PrintString("t total    ");
             LCD_Position(0,11);
             LCD_PrintNumber(tiempo_total);
             conteo=0;       
             conteo_total=0;
             numero_de_muestra=(60*tiempo_total)/tiempo_muestreo;//60 para manejarlo en minutos por
             bandera=false;
-            
+            UART_PutString("\r");
             break;
         }
         
@@ -233,8 +248,7 @@ CY_ISR(InterrupRx){
         
         case 'e':{
             LCD_ClearDisplay();
-            LCD_PrintString("Leyendo");
-            LCD_Position(1,0);
+            LCD_PrintString("Leyendo ");
             char j=0;
             while(file[j]!='.'){
             LCD_PutChar(file[j]);
@@ -333,7 +347,7 @@ int main(void)
                 CyDelay(tiempo_muestreo*995);
                 ADC_StartConvert();
                 ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
-                temp=80*ADC_GetResult8()/255; // actualiza Roll Graph
+                temp=80*ADC_GetResult16()/1024; // actualiza Roll Graph
                 sprintf(temperatura,"*T%d,%d*",temp,conteo_total);
                 UART_PutString(temperatura);
                 sprintf(temperatura,"%d,%d\r\n",temp,conteo_total);
@@ -393,6 +407,12 @@ int main(void)
             }
         
         }
+        /*
+        cuenta=0;
+                CyDelay(tiempo_muestreo*995);
+                frecuencia=cuenta*60*tiempo_muestreo;
+                LCD_Position(0,0);
+                LCD_PrintInt16(frecuencia);*/
 
     }
  }

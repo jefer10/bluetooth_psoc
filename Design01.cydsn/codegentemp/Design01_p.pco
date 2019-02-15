@@ -63,12 +63,12 @@ set_io "\LCD:LCDPort(3)\" iocell 12 3
 set_io "\LCD:LCDPort(4)\" iocell 12 4
 set_io "Rx_1(0)" iocell 3 0
 set_location "ClockBlock" clockblockcell -1 -1 0
-set_location "\ADC:IRQ\" interrupt -1 -1 1
 set_location "\ADC2:IRQ\" interrupt -1 -1 0
+set_location "\ADC:IRQ\" interrupt -1 -1 1
 set_io "\emFile:mosi0(0)\" iocell 1 6
 set_io "Col(0)" iocell 3 7
-set_location "\ADC2:ADC_SAR\" sarcell -1 -1 0
 set_location "\ADC:ADC_SAR\" sarcell -1 -1 1
+set_location "\ADC2:ADC_SAR\" sarcell -1 -1 0
 set_location "Col" logicalport -1 -1 3
 set_io "Tx_1(0)" iocell 3 1
 set_io "\emFile:miso0(0)\" iocell 1 7

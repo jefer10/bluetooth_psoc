@@ -25,8 +25,8 @@
 Number of clocks: 11
 Clock: ADC2_theACLK                  | N/A                   | Target: 1.20 MHz   | 
 Clock: ADC2_theACLK(fixed-function)  | N/A                   | Target: 1.20 MHz   | 
-Clock: ADC_theACLK                   | N/A                   | Target: 1.20 MHz   | 
-Clock: ADC_theACLK(fixed-function)   | N/A                   | Target: 1.20 MHz   | 
+Clock: ADC_theACLK                   | N/A                   | Target: 1.41 MHz   | 
+Clock: ADC_theACLK(fixed-function)   | N/A                   | Target: 1.41 MHz   | 
 Clock: CyBUS_CLK                     | Frequency: 59.88 MHz  | Target: 24.00 MHz  | 
 Clock: CyILO                         | N/A                   | Target: 0.00 MHz   | 
 Clock: CyIMO                         | N/A                   | Target: 3.00 MHz   | 

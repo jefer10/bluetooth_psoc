@@ -11348,17 +11348,17 @@ ARM GAS  Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
   48              	.set ADC_IRQ__INTC_PRIOR_REG, CYREG_NVIC_PRI_1
   49              	.set ADC_IRQ__INTC_SET_EN_REG, CYREG_NVIC_SETENA0
   50              	.set ADC_IRQ__INTC_SET_PD_REG, CYREG_NVIC_SETPEND0
-  51              	.set ADC_theACLK__CFG0, CYREG_CLKDIST_ACFG1_CFG0
-  52              	.set ADC_theACLK__CFG1, CYREG_CLKDIST_ACFG1_CFG1
-  53              	.set ADC_theACLK__CFG2, CYREG_CLKDIST_ACFG1_CFG2
+  51              	.set ADC_theACLK__CFG0, CYREG_CLKDIST_ACFG0_CFG0
+  52              	.set ADC_theACLK__CFG1, CYREG_CLKDIST_ACFG0_CFG1
+  53              	.set ADC_theACLK__CFG2, CYREG_CLKDIST_ACFG0_CFG2
   54              	.set ADC_theACLK__CFG2_SRC_SEL_MASK, 0x07
-  55              	.set ADC_theACLK__CFG3, CYREG_CLKDIST_ACFG1_CFG3
+  55              	.set ADC_theACLK__CFG3, CYREG_CLKDIST_ACFG0_CFG3
   56              	.set ADC_theACLK__CFG3_PHASE_DLY_MASK, 0x0F
-  57              	.set ADC_theACLK__INDEX, 0x01
+  57              	.set ADC_theACLK__INDEX, 0x00
   58              	.set ADC_theACLK__PM_ACT_CFG, CYREG_PM_ACT_CFG1
-  59              	.set ADC_theACLK__PM_ACT_MSK, 0x02
+  59              	.set ADC_theACLK__PM_ACT_MSK, 0x01
   60              	.set ADC_theACLK__PM_STBY_CFG, CYREG_PM_STBY_CFG1
-  61              	.set ADC_theACLK__PM_STBY_MSK, 0x02
+  61              	.set ADC_theACLK__PM_STBY_MSK, 0x01
   62              	
   63              	/* Col */
   64              	.set Col__0__INTTYPE, CYREG_PICU3_INTTYPE7
@@ -11494,17 +11494,17 @@ ARM GAS  Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  188              	.set ADC2_IRQ__INTC_PRIOR_REG, CYREG_NVIC_PRI_0
  189              	.set ADC2_IRQ__INTC_SET_EN_REG, CYREG_NVIC_SETENA0
  190              	.set ADC2_IRQ__INTC_SET_PD_REG, CYREG_NVIC_SETPEND0
- 191              	.set ADC2_theACLK__CFG0, CYREG_CLKDIST_ACFG0_CFG0
- 192              	.set ADC2_theACLK__CFG1, CYREG_CLKDIST_ACFG0_CFG1
- 193              	.set ADC2_theACLK__CFG2, CYREG_CLKDIST_ACFG0_CFG2
+ 191              	.set ADC2_theACLK__CFG0, CYREG_CLKDIST_ACFG1_CFG0
+ 192              	.set ADC2_theACLK__CFG1, CYREG_CLKDIST_ACFG1_CFG1
+ 193              	.set ADC2_theACLK__CFG2, CYREG_CLKDIST_ACFG1_CFG2
  194              	.set ADC2_theACLK__CFG2_SRC_SEL_MASK, 0x07
- 195              	.set ADC2_theACLK__CFG3, CYREG_CLKDIST_ACFG0_CFG3
+ 195              	.set ADC2_theACLK__CFG3, CYREG_CLKDIST_ACFG1_CFG3
  196              	.set ADC2_theACLK__CFG3_PHASE_DLY_MASK, 0x0F
- 197              	.set ADC2_theACLK__INDEX, 0x00
+ 197              	.set ADC2_theACLK__INDEX, 0x01
  198              	.set ADC2_theACLK__PM_ACT_CFG, CYREG_PM_ACT_CFG1
- 199              	.set ADC2_theACLK__PM_ACT_MSK, 0x01
+ 199              	.set ADC2_theACLK__PM_ACT_MSK, 0x02
  200              	.set ADC2_theACLK__PM_STBY_CFG, CYREG_PM_STBY_CFG1
- 201              	.set ADC2_theACLK__PM_STBY_MSK, 0x01
+ 201              	.set ADC2_theACLK__PM_STBY_MSK, 0x02
  202              	
  203              	/* Rx_1 */
  204              	.set Rx_1__0__INTTYPE, CYREG_PICU3_INTTYPE0

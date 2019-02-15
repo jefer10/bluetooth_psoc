@@ -6,7 +6,7 @@
 
 #Build Date:         Dec  5 2017 15:35:27
 
-#File Generated:     Feb 15 2019 09:01:03
+#File Generated:     Feb 15 2019 12:40:20
 
 #Purpose:            
 
@@ -82,8 +82,8 @@ analysis after routing.
 Number of clocks: 11
 Clock: ADC2_theACLK         | Frequency: N/A       | Target:   1.2 MHz
 Clock: ADC2_theACLK(fixed-function) | Frequency: N/A       | Target:   1.2 MHz
-Clock: ADC_theACLK          | Frequency: N/A       | Target:   1.2 MHz
-Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   1.2 MHz
+Clock: ADC_theACLK          | Frequency: N/A       | Target:   1.4 MHz
+Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   1.4 MHz
 Clock: CyBUS_CLK            | Frequency:  55.6 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
@@ -105,8 +105,8 @@ Phase 7
 Number of clocks: 11
 Clock: ADC2_theACLK         | Frequency: N/A       | Target:   1.2 MHz
 Clock: ADC2_theACLK(fixed-function) | Frequency: N/A       | Target:   1.2 MHz
-Clock: ADC_theACLK          | Frequency: N/A       | Target:   1.2 MHz
-Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   1.2 MHz
+Clock: ADC_theACLK          | Frequency: N/A       | Target:   1.4 MHz
+Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   1.4 MHz
 Clock: CyBUS_CLK            | Frequency:   1.4 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
@@ -118,7 +118,7 @@ Clock: emFile_Clock_1       | Frequency:  49.7 MHz | Target:  24.0 MHz
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 1.0 (sec)
+D2088: Phase 7, elapsed time : 1.1 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	15
@@ -151,8 +151,8 @@ analysis after routing.
 Number of clocks: 11
 Clock: ADC2_theACLK         | Frequency: N/A       | Target:   1.2 MHz
 Clock: ADC2_theACLK(fixed-function) | Frequency: N/A       | Target:   1.2 MHz
-Clock: ADC_theACLK          | Frequency: N/A       | Target:   1.2 MHz
-Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   1.2 MHz
+Clock: ADC_theACLK          | Frequency: N/A       | Target:   1.4 MHz
+Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   1.4 MHz
 Clock: CyBUS_CLK            | Frequency:   1.4 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
@@ -170,5 +170,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 2.6 sec.
+I2076: Total run-time: 2.9 sec.
 
