@@ -1,3 +1,3 @@
-# Component constraints for C:\Users\LASER_2\Documents\NicolasYKatherin\bluetooth_psoc\Design01.cydsn\TopDesign\TopDesign.cysch
-# Project: C:\Users\LASER_2\Documents\NicolasYKatherin\bluetooth_psoc\Design01.cydsn\Design01.cyprj
-# Date: Thu, 14 Feb 2019 19:04:00 GMT
+# Component constraints for C:\Users\nikod\Documents\PSoC Creator\bluetooth_psoc\Design01.cydsn\TopDesign\TopDesign.cysch
+# Project: C:\Users\nikod\Documents\PSoC Creator\bluetooth_psoc\Design01.cydsn\Design01.cyprj
+# Date: Fri, 15 Feb 2019 14:00:53 GMT

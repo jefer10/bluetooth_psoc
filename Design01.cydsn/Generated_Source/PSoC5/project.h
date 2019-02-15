@@ -26,12 +26,9 @@
 #include "ADC.h"
 #include "Pin_ADC_aliases.h"
 #include "Pin_ADC.h"
-#include "timer_clock.h"
 #include "isr_pin.h"
 #include "Col_aliases.h"
 #include "Col.h"
-#include "isr_timer.h"
-#include "Timer.h"
 #include "ADC2.h"
 #include "Pin_ADC2_aliases.h"
 #include "Pin_ADC2.h"
@@ -53,6 +50,7 @@
 #include "ADC_theACLK.h"
 #include "ADC2_IRQ.h"
 #include "ADC2_theACLK.h"
+#include "cy_em_eeprom.h"
 #include "core_cm3_psoc5.h"
 #include "CyDmac.h"
 #include "CyFlash.h"
@@ -61,7 +59,6 @@
 #include "cyPm.h"
 #include "CySpc.h"
 #include "cytypes.h"
-#include "cy_em_eeprom.h"
 
 /*[]*/
 

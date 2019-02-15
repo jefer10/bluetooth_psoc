@@ -39,7 +39,7 @@ volatile bool bandera=false;
 
 volatile char  auxiliar;
 volatile uint16 cuenta=0;
-volatile uint16 frecuencia=0;
+volatile uint16 frecuencia=100;
 
 
 void IniciarArchivos(){
@@ -115,12 +115,7 @@ void Termino(){
 
 CY_ISR(ISR_SW){
     cuenta++;
-    Col_ClearInterrupt(); 
-}
-
-CY_ISR(velo){
-    frecuencia=60*cuenta;
-    cuenta=0;
+    Col_ClearInterrupt();
 }
 
 void SendFile(){
@@ -183,8 +178,6 @@ CY_ISR(InterrupRx){
         case 'v':{
             LCD_ClearDisplay();
             LCD_PrintString("Inicio Velocidad");
-            isr_pin_Start();
-            isr_timer_Start();
             WriteHead(0x02);//Crea cabecera de temperatura
             break;
         }
@@ -269,16 +262,13 @@ int main(void)
        CyGlobalIntEnable; /* Enable global interrupts. */
     isrRX_StartEx(InterrupRx);
     isr_pin_StartEx(ISR_SW);
-    isr_timer_StartEx(velo);
     //////////////////////////////////////////////////////////////
     UART_Start();
     LCD_Start();
     FS_Init();// Inicia Sistema de archivos
     ADC_Start();
     ADC2_Start();
-    Timer_Start();
     IniciarArchivos();
-    
     LCD_Position(0,0);
     LCD_PrintString("t total    1min");
     LCD_Position(1,0);
@@ -287,7 +277,7 @@ int main(void)
 
 ///////////// Build panel in app
 
-UART_PutString("*.kwl");
+    UART_PutString("*.kwl");
     UART_PutString("\r");
     UART_PutString("clear_panel()");
     UART_PutString("\r");
@@ -338,7 +328,6 @@ UART_PutString("*.kwl");
 
     for(;;)
     {
-        
         if(dato_bluetooht=='t'){
             if(numero_de_muestra!=conteo_total){
                 CyDelay(tiempo_muestreo*995);
@@ -378,17 +367,19 @@ UART_PutString("*.kwl");
                 }
                 FS_FClose(pFile);
                 conteo_total++; 
-        }else{
-            Termino();
-        }
+            }else{
+                Termino();
+            }
         }
         if(dato_bluetooht=='v')
         {
             if(numero_de_muestra!=conteo_total){
+                cuenta=0;
                 CyDelay(tiempo_muestreo*995);
-                sprintf(velocidad,"*S%d,%d*",frecuencia,conteo_total);
+                frecuencia=cuenta*60*tiempo_muestreo;
+                sprintf(velocidad,"*S%i,%d*",frecuencia,conteo_total);
                 UART_PutString(velocidad);
-                sprintf(velocidad,"%d,%d\r\n",frecuencia,conteo_total);
+                sprintf(velocidad,"%d,%i\r\n",frecuencia,conteo_total);
                 pFile=FS_FOpen(file, "a");
                 if (pFile != 0) {
                     FS_Write(pFile, velocidad, strlen(velocidad));// Escribe la cabecera cotrespondiente a Temp
@@ -397,14 +388,12 @@ UART_PutString("*.kwl");
                 }
                 FS_FClose(pFile);
                 conteo_total++; 
-        }else{
-            Termino();
-
-            //isr_pin_Stop();
-            //Timer_Stop();
-        }
+            }else{
+                Termino();
+            }
         
         }
+
     }
  }
 
