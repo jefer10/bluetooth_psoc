@@ -1,3 +1,4 @@
+
 /* ========================================
  *
  * Copyright Jeferson Rondon - Nicolas Pastran,2019
@@ -282,7 +283,7 @@ int main(void)
     FS_Init();// Inicia Sistema de archivos
     ADC_Start();
     ADC2_Start();
-    IniciarArchivos();
+    IniciarArchivos();    
     LCD_Position(0,0);
     LCD_PrintString("t total    1min");
     LCD_Position(1,0);
